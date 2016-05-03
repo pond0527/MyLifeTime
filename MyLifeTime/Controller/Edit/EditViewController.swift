@@ -20,5 +20,13 @@ class EditViewController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    /**
+     自クラス呼び出し自に処理されます。
+     
+     - parameter animated: <#animated description#>
+     */
+    override func viewDidAppear(animated: Bool) {
+        showMessage("テスト", msg: "Editタブ")
+    }
     
 }

@@ -72,10 +72,5 @@ class BaseViewController: UIViewController, LTMorphingLabelDelegate, UITableView
             NSThread.sleepForTimeInterval(wait)
         }
     }
-    
-    
-    func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
-        return UIPresentationController(presentedViewController: presented, presentingViewController: presenting)
-    }
 }
 
