@@ -49,6 +49,8 @@
 		97FDC7651CD8A12F00692C30 /* MyLifeTimeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyLifeTimeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		97FDC7691CD8A12F00692C30 /* MyLifeTimeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLifeTimeUITests.swift; sourceTree = "<group>"; };
 		97FDC76B1CD8A12F00692C30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		97FDC7771CD8A19900692C30 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
+		97FDC7781CD8A19900692C30 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,10 @@
 		97FDC7451CD8A12F00692C30 /* MyLifeTime */ = {
 			isa = PBXGroup;
 			children = (
+				97FDC77C1CD8A1DC00692C30 /* Library */,
+				97FDC77B1CD8A1D500692C30 /* Entity */,
+				97FDC77A1CD8A1D100692C30 /* View */,
+				97FDC7791CD8A1C300692C30 /* Controller */,
 				97FDC7461CD8A12F00692C30 /* AppDelegate.swift */,
 				97FDC7481CD8A12F00692C30 /* ViewController.swift */,
 				97FDC74A1CD8A12F00692C30 /* Main.storyboard */,
@@ -126,6 +132,34 @@
 				97FDC76B1CD8A12F00692C30 /* Info.plist */,
 			);
 			path = MyLifeTimeUITests;
+			sourceTree = "<group>";
+		};
+		97FDC7791CD8A1C300692C30 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		97FDC77A1CD8A1D100692C30 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		97FDC77B1CD8A1D500692C30 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Entity;
+			sourceTree = "<group>";
+		};
+		97FDC77C1CD8A1DC00692C30 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Library;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,7 +249,6 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
 			);
 			mainGroup = 97FDC73A1CD8A12F00692C30;
@@ -304,6 +337,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				97FDC74B1CD8A12F00692C30 /* Base */,
+				97FDC7771CD8A19900692C30 /* ja */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -312,6 +346,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				97FDC7531CD8A12F00692C30 /* Base */,
+				97FDC7781CD8A19900692C30 /* ja */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
