@@ -1,0 +1,27 @@
+PODS:
+  - Realm (0.100.0):
+    - Realm/Headers (= 0.100.0)
+  - Realm/Headers (0.100.0)
+  - RealmSwift (0.100.0):
+    - Realm (= 0.100.0)
+  - SwiftDate (3.0.9)
+
+DEPENDENCIES:
+  - RealmSwift
+  - SwiftDate (from `https://github.com/malcommac/SwiftDate.git`)
+
+EXTERNAL SOURCES:
+  SwiftDate:
+    :git: https://github.com/malcommac/SwiftDate.git
+
+CHECKOUT OPTIONS:
+  SwiftDate:
+    :commit: 0dd3a3c610f2147a92c834cb4bdb5d983dd5f37b
+    :git: https://github.com/malcommac/SwiftDate.git
+
+SPEC CHECKSUMS:
+  Realm: b13b548e712d28a66678970c45cd245ebb94ba3b
+  RealmSwift: 1bb0ba2ceaa06b65d740b4f91bfa06e3fd1b805c
+  SwiftDate: fa487d9b7d8c3070ea2553486902494f4915465d
+
+COCOAPODS: 0.39.0
