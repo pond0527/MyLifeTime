@@ -70,6 +70,14 @@
 		97FDC7F31CD8AC7E00692C30 /* Fragment.png in Resources */ = {isa = PBXBuildFile; fileRef = 97FDC7E21CD8AC7E00692C30 /* Fragment.png */; };
 		97FDC7F41CD8AC7E00692C30 /* Smoke.png in Resources */ = {isa = PBXBuildFile; fileRef = 97FDC7E31CD8AC7E00692C30 /* Smoke.png */; };
 		97FDC7F51CD8AC7E00692C30 /* Sparkle.png in Resources */ = {isa = PBXBuildFile; fileRef = 97FDC7E41CD8AC7E00692C30 /* Sparkle.png */; };
+		97FDC86D1CD8D15A00692C30 /* RAMBounceAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FDC8601CD8D15900692C30 /* RAMBounceAnimation.swift */; };
+		97FDC86E1CD8D15A00692C30 /* RAMFrameItemAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FDC8621CD8D15900692C30 /* RAMFrameItemAnimation.swift */; };
+		97FDC86F1CD8D15A00692C30 /* RAMFumeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FDC8641CD8D15900692C30 /* RAMFumeAnimation.swift */; };
+		97FDC8701CD8D15A00692C30 /* RAMRotationAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FDC8661CD8D15900692C30 /* RAMRotationAnimation.swift */; };
+		97FDC8711CD8D15A00692C30 /* RAMTransitionItemAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FDC8681CD8D15A00692C30 /* RAMTransitionItemAnimations.swift */; };
+		97FDC8721CD8D15A00692C30 /* RAMAnimatedTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FDC8691CD8D15A00692C30 /* RAMAnimatedTabBarController.swift */; };
+		97FDC8731CD8D15A00692C30 /* RAMBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FDC86B1CD8D15A00692C30 /* RAMBadge.swift */; };
+		97FDC8741CD8D15A00692C30 /* RAMItemAnimationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FDC86C1CD8D15A00692C30 /* RAMItemAnimationProtocol.swift */; };
 		B9C0FB6F44A2164637D671C4 /* Pods_MyLifeTimeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DC4A59D09436590FC197979 /* Pods_MyLifeTimeTests.framework */; };
 		E91639A1491EF824F8DBB585 /* Pods_MyLifeTimeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FEB576117B0ECE29BABFBF2 /* Pods_MyLifeTimeUITests.framework */; };
 /* End PBXBuildFile section */
@@ -166,6 +174,14 @@
 		97FDC7E21CD8AC7E00692C30 /* Fragment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Fragment.png; sourceTree = "<group>"; };
 		97FDC7E31CD8AC7E00692C30 /* Smoke.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Smoke.png; sourceTree = "<group>"; };
 		97FDC7E41CD8AC7E00692C30 /* Sparkle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sparkle.png; sourceTree = "<group>"; };
+		97FDC8601CD8D15900692C30 /* RAMBounceAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMBounceAnimation.swift; sourceTree = "<group>"; };
+		97FDC8621CD8D15900692C30 /* RAMFrameItemAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMFrameItemAnimation.swift; sourceTree = "<group>"; };
+		97FDC8641CD8D15900692C30 /* RAMFumeAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMFumeAnimation.swift; sourceTree = "<group>"; };
+		97FDC8661CD8D15900692C30 /* RAMRotationAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMRotationAnimation.swift; sourceTree = "<group>"; };
+		97FDC8681CD8D15A00692C30 /* RAMTransitionItemAnimations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMTransitionItemAnimations.swift; sourceTree = "<group>"; };
+		97FDC8691CD8D15A00692C30 /* RAMAnimatedTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMAnimatedTabBarController.swift; sourceTree = "<group>"; };
+		97FDC86B1CD8D15A00692C30 /* RAMBadge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMBadge.swift; sourceTree = "<group>"; };
+		97FDC86C1CD8D15A00692C30 /* RAMItemAnimationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMItemAnimationProtocol.swift; sourceTree = "<group>"; };
 		9FEB576117B0ECE29BABFBF2 /* Pods_MyLifeTimeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyLifeTimeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6DE4B8B208D5E7F4B97279C /* Pods-MyLifeTime.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyLifeTime.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyLifeTime/Pods-MyLifeTime.release.xcconfig"; sourceTree = "<group>"; };
 		C06ECDEA6517FA38FF02C716 /* Pods-MyLifeTimeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyLifeTimeUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyLifeTimeUITests/Pods-MyLifeTimeUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -204,6 +220,7 @@
 		97FDC73A1CD8A12F00692C30 = {
 			isa = PBXGroup;
 			children = (
+				97FDC85D1CD8D15900692C30 /* RAMAnimatedTabBarController */,
 				97FDC7951CD8AC6800692C30 /* Spring */,
 				97FDC7D11CD8AC7E00692C30 /* LTMorphingLabel */,
 				97FDC7451CD8A12F00692C30 /* MyLifeTime */,
@@ -423,6 +440,77 @@
 				97FDC7E41CD8AC7E00692C30 /* Sparkle.png */,
 			);
 			path = Particles;
+			sourceTree = "<group>";
+		};
+		97FDC85D1CD8D15900692C30 /* RAMAnimatedTabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				97FDC85E1CD8D15900692C30 /* Animations */,
+				97FDC8691CD8D15A00692C30 /* RAMAnimatedTabBarController.swift */,
+				97FDC86A1CD8D15A00692C30 /* RAMBadge */,
+				97FDC86C1CD8D15A00692C30 /* RAMItemAnimationProtocol.swift */,
+			);
+			path = RAMAnimatedTabBarController;
+			sourceTree = "<group>";
+		};
+		97FDC85E1CD8D15900692C30 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				97FDC85F1CD8D15900692C30 /* BounceAnimation */,
+				97FDC8611CD8D15900692C30 /* FrameAnimation */,
+				97FDC8631CD8D15900692C30 /* FumeAnimation */,
+				97FDC8651CD8D15900692C30 /* RotationAnimation */,
+				97FDC8671CD8D15900692C30 /* TransitionAniamtions */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
+		97FDC85F1CD8D15900692C30 /* BounceAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				97FDC8601CD8D15900692C30 /* RAMBounceAnimation.swift */,
+			);
+			path = BounceAnimation;
+			sourceTree = "<group>";
+		};
+		97FDC8611CD8D15900692C30 /* FrameAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				97FDC8621CD8D15900692C30 /* RAMFrameItemAnimation.swift */,
+			);
+			path = FrameAnimation;
+			sourceTree = "<group>";
+		};
+		97FDC8631CD8D15900692C30 /* FumeAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				97FDC8641CD8D15900692C30 /* RAMFumeAnimation.swift */,
+			);
+			path = FumeAnimation;
+			sourceTree = "<group>";
+		};
+		97FDC8651CD8D15900692C30 /* RotationAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				97FDC8661CD8D15900692C30 /* RAMRotationAnimation.swift */,
+			);
+			path = RotationAnimation;
+			sourceTree = "<group>";
+		};
+		97FDC8671CD8D15900692C30 /* TransitionAniamtions */ = {
+			isa = PBXGroup;
+			children = (
+				97FDC8681CD8D15A00692C30 /* RAMTransitionItemAnimations.swift */,
+			);
+			path = TransitionAniamtions;
+			sourceTree = "<group>";
+		};
+		97FDC86A1CD8D15A00692C30 /* RAMBadge */ = {
+			isa = PBXGroup;
+			children = (
+				97FDC86B1CD8D15A00692C30 /* RAMBadge.swift */,
+			);
+			path = RAMBadge;
 			sourceTree = "<group>";
 		};
 		BC4E25125C3C13D7416A4FCC /* Frameworks */ = {
@@ -722,6 +810,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97FDC86F1CD8D15A00692C30 /* RAMFumeAnimation.swift in Sources */,
 				97FDC7831CD8A4EB00692C30 /* CreateViewController.swift in Sources */,
 				97FDC7C61CD8AC6800692C30 /* Spring.swift in Sources */,
 				97FDC7491CD8A12F00692C30 /* BaseViewController.swift in Sources */,
@@ -737,15 +826,18 @@
 				97FDC7E91CD8AC7E00692C30 /* LTMorphingEffect.swift in Sources */,
 				97FDC7EE1CD8AC7E00692C30 /* LTMorphingLabel+Pixelate.swift in Sources */,
 				97FDC7861CD8A53400692C30 /* MltViewController.swift in Sources */,
+				97FDC86D1CD8D15A00692C30 /* RAMBounceAnimation.swift in Sources */,
 				97FDC7C91CD8AC6800692C30 /* SpringImageView.swift in Sources */,
 				97FDC7EB1CD8AC7E00692C30 /* LTMorphingLabel+Burn.swift in Sources */,
 				97FDC7B51CD8AC6800692C30 /* AsyncImageView.swift in Sources */,
 				97FDC7ED1CD8AC7E00692C30 /* LTMorphingLabel+Fall.swift in Sources */,
 				97FDC7EF1CD8AC7E00692C30 /* LTMorphingLabel+Sparkle.swift in Sources */,
 				97FDC7CB1CD8AC6800692C30 /* SpringTextField.swift in Sources */,
+				97FDC8701CD8D15A00692C30 /* RAMRotationAnimation.swift in Sources */,
 				97FDC7BC1CD8AC6800692C30 /* DesignableTextField.swift in Sources */,
 				97FDC7BE1CD8AC6800692C30 /* DesignableView.swift in Sources */,
 				97FDC7C51CD8AC6800692C30 /* SoundPlayer.swift in Sources */,
+				97FDC86E1CD8D15A00692C30 /* RAMFrameItemAnimation.swift in Sources */,
 				97FDC7E61CD8AC7E00692C30 /* LTCharacterLimbo.swift in Sources */,
 				97FDC74F1CD8A12F00692C30 /* MyLifeTime.xcdatamodeld in Sources */,
 				97FDC7F11CD8AC7E00692C30 /* NSString+LTMorphingLabel.swift in Sources */,
@@ -756,11 +848,15 @@
 				97FDC7CE1CD8AC6800692C30 /* TransitionManager.swift in Sources */,
 				97FDC7B91CD8AC6800692C30 /* DesignableImageView.swift in Sources */,
 				97FDC7471CD8A12F00692C30 /* AppDelegate.swift in Sources */,
+				97FDC8721CD8D15A00692C30 /* RAMAnimatedTabBarController.swift in Sources */,
 				97FDC7B41CD8AC6800692C30 /* AsyncButton.swift in Sources */,
+				97FDC8731CD8D15A00692C30 /* RAMBadge.swift in Sources */,
 				97FDC7D01CD8AC6800692C30 /* UnwindSegue.swift in Sources */,
 				97FDC7801CD8A45F00692C30 /* ShowViewContorller.swift in Sources */,
 				97FDC7CD1CD8AC6800692C30 /* SpringView.swift in Sources */,
+				97FDC8741CD8D15A00692C30 /* RAMItemAnimationProtocol.swift in Sources */,
 				97FDC7E81CD8AC7E00692C30 /* LTEmitterView.swift in Sources */,
+				97FDC8711CD8D15A00692C30 /* RAMTransitionItemAnimations.swift in Sources */,
 				97FDC7EC1CD8AC7E00692C30 /* LTMorphingLabel+Evaporate.swift in Sources */,
 				97FDC7BA1CD8AC6800692C30 /* DesignableLabel.swift in Sources */,
 				97FDC7B61CD8AC6800692C30 /* AutoTextView.swift in Sources */,

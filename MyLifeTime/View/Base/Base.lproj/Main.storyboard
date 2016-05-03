@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="gpr-Fw-hXi">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Base View Controller-->
+        <!--Item-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="BaseViewController" customModule="MyLifeTime" customModuleProvider="target" sceneMemberID="viewController">
@@ -21,6 +21,7 @@
                             <outletCollection property="gestureRecognizers" destination="60W-qH-Vnn" appends="YES" id="6qg-m9-Uh6"/>
                         </connections>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="bYG-Pa-hw8" customClass="RAMAnimatedTabBarItem" customModule="MyLifeTime" customModuleProvider="target"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="60W-qH-Vnn">
@@ -29,7 +30,64 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="161.59999999999999" y="375.82666666666665"/>
+            <point key="canvasLocation" x="693" y="375"/>
+        </scene>
+        <!--Animated Tab Bar Controller-->
+        <scene sceneID="ndY-RA-aks">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="gpr-Fw-hXi" customClass="RAMAnimatedTabBarController" customModule="MyLifeTime" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="gjk-gx-cdS">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="9Aj-IJ-Ol6"/>
+                        <segue destination="v9x-Lb-5SG" kind="relationship" relationship="viewControllers" id="ArJ-da-aDr"/>
+                        <segue destination="QUT-cX-qkd" kind="relationship" relationship="viewControllers" id="Zwy-4h-DmF"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C2H-sv-ByZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="161" y="375"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="ypR-v6-CxO">
+            <objects>
+                <viewController id="v9x-Lb-5SG" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bei-Hb-Qcr"/>
+                        <viewControllerLayoutGuide type="bottom" id="UcL-mw-MGO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Vza-Ke-baF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="cTf-hw-Ws9" customClass="RAMAnimatedTabBarItem" customModule="MyLifeTime" customModuleProvider="target"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jsw-5G-v1v" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-59" y="1046"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="ceV-9W-9v8">
+            <objects>
+                <viewController id="QUT-cX-qkd" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ha5-7s-okq"/>
+                        <viewControllerLayoutGuide type="bottom" id="sO7-AX-2ac"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZQi-zh-yws">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="kam-Ig-Qiy" customClass="RAMAnimatedTabBarItem" customModule="MyLifeTime" customModuleProvider="target"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XHt-D9-EZ9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="450" y="1046"/>
         </scene>
     </scenes>
 </document>
