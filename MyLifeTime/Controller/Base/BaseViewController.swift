@@ -9,7 +9,7 @@
 import UIKit
 import SwiftDate
 
-class BaseViewController: UIViewController, LTMorphingLabelDelegate, UITableViewDelegate, UIViewControllerTransitioningDelegate {
+class BaseViewController: UIViewController, LTMorphingLabelDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
