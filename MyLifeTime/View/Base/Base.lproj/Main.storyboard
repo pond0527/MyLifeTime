@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Person-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="BaseViewController" customModule="MyLifeTime" customModuleProvider="target" sceneMemberID="viewController">
@@ -21,9 +21,14 @@
                             <outletCollection property="gestureRecognizers" destination="60W-qH-Vnn" appends="YES" id="6qg-m9-Uh6"/>
                         </connections>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="bYG-Pa-hw8" customClass="RAMAnimatedTabBarItem" customModule="MyLifeTime" customModuleProvider="target"/>
+                    <tabBarItem key="tabBarItem" title="Person" image="tabPerson.png" id="bYG-Pa-hw8" customClass="RAMAnimatedTabBarItem" customModule="MyLifeTime" customModuleProvider="target">
+                        <connections>
+                            <outlet property="animation" destination="ZtM-hq-Cdp" id="gL7-zv-fXB"/>
+                        </connections>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <customObject id="ZtM-hq-Cdp" customClass="RAMLeftRotationAnimation" customModule="MyLifeTime" customModuleProvider="target"/>
                 <tapGestureRecognizer id="60W-qH-Vnn">
                     <connections>
                         <action selector="tapScrn:" destination="BYZ-38-t0r" id="9zV-zx-R1o"/>
@@ -51,7 +56,7 @@
             </objects>
             <point key="canvasLocation" x="161" y="375"/>
         </scene>
-        <!--Item-->
+        <!--M・L・T-->
         <scene sceneID="ypR-v6-CxO">
             <objects>
                 <viewController id="v9x-Lb-5SG" sceneMemberID="viewController">
@@ -64,13 +69,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="cTf-hw-Ws9" customClass="RAMAnimatedTabBarItem" customModule="MyLifeTime" customModuleProvider="target"/>
+                    <tabBarItem key="tabBarItem" title="M・L・T" image="tabMLT.png" id="cTf-hw-Ws9" customClass="RAMAnimatedTabBarItem" customModule="MyLifeTime" customModuleProvider="target">
+                        <connections>
+                            <outlet property="animation" destination="Alt-HQ-UPz" id="wqR-nY-GgN"/>
+                        </connections>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jsw-5G-v1v" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="Alt-HQ-UPz" customClass="RAMBounceAnimation" customModule="MyLifeTime" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="-59" y="1046"/>
         </scene>
-        <!--Item-->
+        <!--Edit-->
         <scene sceneID="ceV-9W-9v8">
             <objects>
                 <viewController id="QUT-cX-qkd" sceneMemberID="viewController">
@@ -83,11 +93,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="kam-Ig-Qiy" customClass="RAMAnimatedTabBarItem" customModule="MyLifeTime" customModuleProvider="target"/>
+                    <tabBarItem key="tabBarItem" title="Edit" image="tabEdit.png" id="kam-Ig-Qiy" customClass="RAMAnimatedTabBarItem" customModule="MyLifeTime" customModuleProvider="target">
+                        <connections>
+                            <outlet property="animation" destination="sFc-yX-RQ6" id="7Di-1X-rSI"/>
+                        </connections>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XHt-D9-EZ9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="sFc-yX-RQ6" customClass="RAMFlipTopTransitionItemAnimations" customModule="MyLifeTime" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="450" y="1046"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="tabEdit.png" width="32" height="32"/>
+        <image name="tabMLT.png" width="32" height="32"/>
+        <image name="tabPerson.png" width="32" height="32"/>
+    </resources>
 </document>
