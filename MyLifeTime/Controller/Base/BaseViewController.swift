@@ -15,11 +15,6 @@ class BaseViewController: UIViewController, LTMorphingLabelDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     /**
      自クラス呼び出し自に処理されます。
@@ -71,6 +66,12 @@ class BaseViewController: UIViewController, LTMorphingLabelDelegate {
         if wait > 0.0 {
             NSThread.sleepForTimeInterval(wait)
         }
+    }
+    
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 }
 

@@ -9,15 +9,11 @@
 import UIKit
 
 class CreateViewController: BaseViewController {
+    var prsn: Person?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     /**
@@ -26,7 +22,27 @@ class CreateViewController: BaseViewController {
      - parameter animated: <#animated description#>
      */
     override func viewDidAppear(animated: Bool) {
-        showMessage("テスト", msg: "追加")
+        
+        //delegate経由で画面間データ受け渡し
+        let appDlgt: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        self.prsn = appDlgt.prsn
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    /**
+     初期値を表示します。
+     */
+    func setup() {
+        
+        //ユーザ情報を編集するか判定
+        if let tmpPrsn = prsn {
+            
+            
+        }
+        
+    }
 }
