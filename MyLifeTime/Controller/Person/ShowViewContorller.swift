@@ -153,13 +153,9 @@ class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDa
         let usrAlert: UIAlertController = UIAlertController(title: "あなたの情報を入力してください", message: "", preferredStyle: UIAlertControllerStyle.Alert)
         
         //アクション定義
-        let cancelAction: UIAlertAction =
-            UIAlertAction(title: "キャンセル", style: UIAlertActionStyle.Cancel, handler: {(action: UIAlertAction!) -> Void in print("キャンセル")})
-        
         let defaultAction: UIAlertAction =
             UIAlertAction(title: "登録", style: UIAlertActionStyle.Default, handler: {(action: UIAlertAction!) -> Void in self.create(usrAlert)})
         
-        usrAlert.addAction(cancelAction)
         usrAlert.addAction(defaultAction)
         
         //テキストフィールド追加
@@ -185,7 +181,7 @@ class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDa
         prsn.sex = usr.textFields![1].text!
         prsn.year = usr.textFields![2].text!
         prsn.month = usr.textFields![3].text!
-        prsn.day = usr.textFields![3].text!
+        prsn.day = usr.textFields![4].text!
         prsn.bondSts = false
         prsn.save()
         

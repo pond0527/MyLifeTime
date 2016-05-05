@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //Realmマイグレーション(カラムを追加)
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(
+            schemaVersion: 1,
+            migrationBlock: { migration, oldSchemaVersion in
+                
+                migration.enumerate(Person.className()) { oldObject, newObject in
+                    
+                    if oldSchemaVersion < 1 {
+                        newObject?["bondColor"] = ""
+                        newObject?["bondYear"] = ""
+                        newObject?["bondMonth"] = ""
+                        newObject?["bondDay"] = ""
+                    }
+                }
+        })
+        
         return true
     }
 

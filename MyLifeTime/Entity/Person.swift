@@ -20,6 +20,10 @@ class Person: Object {
     dynamic var month = ""
     dynamic var day = ""
     dynamic var bondSts = false
+    dynamic var bondColor = ""
+    dynamic var bondYear = ""
+    dynamic var bondMonth = ""
+    dynamic var bondDay = ""
     
     /*主キー*/
     override static func primaryKey() -> String? {
