@@ -146,7 +146,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wyt-5r-juD">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Wyt-5r-juD" customClass="RAMPaperSwitch" customModule="MyLifeTime" customModuleProvider="target">
                                 <rect key="frame" x="243" y="279" width="51" height="31"/>
                             </switch>
                         </subviews>
@@ -157,6 +157,12 @@
                             <constraint firstItem="gpg-GQ-E0Y" firstAttribute="width" secondItem="aGG-Ng-Jl0" secondAttribute="width" id="fct-1K-Kg7"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="lblSts" destination="0Pg-9n-SlJ" id="VDb-7J-sPb"/>
+                        <outlet property="slctSex" destination="sph-xx-ofX" id="OqB-VE-a3q"/>
+                        <outlet property="swchBndSts" destination="Wyt-5r-juD" id="zcH-yN-IYw"/>
+                        <outlet property="txtNm" destination="lEY-7x-WTO" id="cta-I4-knM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gk0-FI-1OT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

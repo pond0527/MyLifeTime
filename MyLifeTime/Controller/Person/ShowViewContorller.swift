@@ -112,8 +112,8 @@ class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDa
         
         //遷移する画面を定義
         let stryBrd: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let mvViewController = stryBrd.instantiateViewControllerWithIdentifier("CreateViewController") as! UIViewController
-        mvViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
+        let mvViewController = stryBrd.instantiateViewControllerWithIdentifier("CreateViewController")
+        mvViewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
         self.presentViewController(mvViewController, animated: true, completion: nil)
     }
     

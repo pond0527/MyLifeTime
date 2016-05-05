@@ -11,6 +11,7 @@
 		9710F5F81CD9BBF500C58BE2 /* tabEdit.png in Resources */ = {isa = PBXBuildFile; fileRef = 9710F5F51CD9BBF500C58BE2 /* tabEdit.png */; };
 		9710F5F91CD9BBF500C58BE2 /* tabMLT.png in Resources */ = {isa = PBXBuildFile; fileRef = 9710F5F61CD9BBF500C58BE2 /* tabMLT.png */; };
 		9710F5FA1CD9BBF500C58BE2 /* tabPerson.png in Resources */ = {isa = PBXBuildFile; fileRef = 9710F5F71CD9BBF500C58BE2 /* tabPerson.png */; };
+		979577051CDB6B79007B15DC /* RAMPaperSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979577041CDB6B79007B15DC /* RAMPaperSwitch.swift */; };
 		97FDC7471CD8A12F00692C30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FDC7461CD8A12F00692C30 /* AppDelegate.swift */; };
 		97FDC7491CD8A12F00692C30 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FDC7481CD8A12F00692C30 /* BaseViewController.swift */; };
 		97FDC74C1CD8A12F00692C30 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97FDC74A1CD8A12F00692C30 /* Main.storyboard */; };
@@ -110,6 +111,7 @@
 		9710F5F51CD9BBF500C58BE2 /* tabEdit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabEdit.png; sourceTree = "<group>"; };
 		9710F5F61CD9BBF500C58BE2 /* tabMLT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabMLT.png; sourceTree = "<group>"; };
 		9710F5F71CD9BBF500C58BE2 /* tabPerson.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabPerson.png; sourceTree = "<group>"; };
+		979577041CDB6B79007B15DC /* RAMPaperSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMPaperSwitch.swift; sourceTree = "<group>"; };
 		97FDC7431CD8A12F00692C30 /* MyLifeTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyLifeTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97FDC7461CD8A12F00692C30 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97FDC7481CD8A12F00692C30 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -233,9 +235,18 @@
 			path = MltImage;
 			sourceTree = "<group>";
 		};
+		979577031CDB6B79007B15DC /* PaperSwitch */ = {
+			isa = PBXGroup;
+			children = (
+				979577041CDB6B79007B15DC /* RAMPaperSwitch.swift */,
+			);
+			path = PaperSwitch;
+			sourceTree = "<group>";
+		};
 		97FDC73A1CD8A12F00692C30 = {
 			isa = PBXGroup;
 			children = (
+				979577031CDB6B79007B15DC /* PaperSwitch */,
 				97FDC85D1CD8D15900692C30 /* RAMAnimatedTabBarController */,
 				97FDC7951CD8AC6800692C30 /* Spring */,
 				97FDC7D11CD8AC7E00692C30 /* LTMorphingLabel */,
@@ -863,6 +874,7 @@
 				97FDC7F11CD8AC7E00692C30 /* NSString+LTMorphingLabel.swift in Sources */,
 				97FDC7B71CD8AC6800692C30 /* BlurView.swift in Sources */,
 				97FDC7C11CD8AC6800692C30 /* KeyboardLayoutConstraint.swift in Sources */,
+				979577051CDB6B79007B15DC /* RAMPaperSwitch.swift in Sources */,
 				97FDC7C71CD8AC6800692C30 /* SpringAnimation.swift in Sources */,
 				97FDC7C41CD8AC6800692C30 /* Misc.swift in Sources */,
 				97FDC7CE1CD8AC6800692C30 /* TransitionManager.swift in Sources */,

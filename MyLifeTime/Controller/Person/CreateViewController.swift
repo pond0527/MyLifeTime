@@ -9,11 +9,19 @@
 import UIKit
 
 class CreateViewController: BaseViewController {
+
     var prsn: Person?
+    
+    @IBOutlet weak var lblSts: UILabel!
+    @IBOutlet weak var swchBndSts: RAMPaperSwitch!
+    @IBOutlet weak var txtNm: UITextField!
+    @IBOutlet weak var slctSex: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        swchBndSts.onTintColor = Color.LightGrey.get()
     }
     
     /**
@@ -26,6 +34,7 @@ class CreateViewController: BaseViewController {
         //delegate経由で画面間データ受け渡し
         let appDlgt: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         self.prsn = appDlgt.prsn
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -43,6 +52,5 @@ class CreateViewController: BaseViewController {
             
             
         }
-        
     }
 }
