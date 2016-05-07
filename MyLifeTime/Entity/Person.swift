@@ -24,7 +24,7 @@ class Person: Object {
     dynamic var bondYear = ""
     dynamic var bondMonth = ""
     dynamic var bondDay = ""
-    
+
     /*主キー*/
     override static func primaryKey() -> String? {
         return "id"
