@@ -74,7 +74,7 @@ class Person: Object {
     /**
      更新処理を行います。
      */
-    static func update(method: (() -> Void)) {
+    func update(method: (() -> Void)) {
         try! Person.realm.write {
             method()
         }

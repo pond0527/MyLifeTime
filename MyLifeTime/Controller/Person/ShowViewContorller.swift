@@ -94,7 +94,7 @@ class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDa
     }
     
     /**
-     セル選択時
+     セル選択時。
      
      - parameter tableView: <#tableView description#>
      - parameter indexPath: <#indexPath description#>
@@ -103,7 +103,6 @@ class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDa
         
         prsns = Person.loadAll()
         let prsn: Person = prsns[indexPath.row]
-        //showMessage("選択したユーザ情報", msg: "ユーザ名：\(prsn.nm)\n 性別：\(prsn.sex)")
         
         //delegate経由で画面間データ受け渡し
         let appDlgt: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -118,7 +117,7 @@ class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDa
     }
     
     /**
-     削除押下時
+     削除押下時。
      
      - parameter tableView:    <#tableView description#>
      - parameter editingStyle: <#editingStyle description#>
@@ -168,6 +167,20 @@ class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDa
         presentViewController(usrAlert,animated: true, completion: nil)
     }
 
+    /**
+     追加ボタン押下時。
+     
+     - parameter sender: <#sender description#>
+     */
+    @IBAction func tapAddBtn(sender: AnyObject) {
+        
+        //遷移する画面を定義
+        let stryBrd: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let mvViewController = stryBrd.instantiateViewControllerWithIdentifier("CreateViewController")
+        mvViewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+        self.presentViewController(mvViewController, animated: true, completion: nil)
+    }
+    
     /**
      ユーザ情報を登録します。
      */

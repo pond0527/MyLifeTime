@@ -43,6 +43,45 @@ class BaseViewController: UIViewController, LTMorphingLabelDelegate {
     }
     
     /**
+     メッセージを表示します。
+     
+     - parameter titleName: タイトル名
+     - parameter fixedMsg:  固定文字列
+     - parameter msgArgs:   代入文字列
+     - parameter method:    ボタン押下後処理
+     */
+    func showMessage(titleName: String, fixedMsg: String, msgArgs: [CVarArgType], method: (() -> Void)) {
+        
+        let msgAlert = UIAlertController(title: titleName, message: NSString(format: fixedMsg, arguments: getVaList(msgArgs)) as String, preferredStyle: .Alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler:{(action:UIAlertAction!) -> Void in method()})
+        msgAlert.addAction(defaultAction)
+        
+        willMoveToParentViewController(self)
+        
+        //メッセージ表示
+        presentViewController(msgAlert,animated: true, completion: nil)
+    }
+    
+    /**
+     メッセージを表示します。
+     
+     - parameter titleName: タイトル名
+     - parameter msg:       本文
+     - parameter method:    ボタン押下後処理
+     */
+    func showMessage(titleName: String, msg: String, method: (() -> Void)) {
+        
+        let msgAlert = UIAlertController(title: titleName, message: msg, preferredStyle: .Alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: {(action:UIAlertAction!) -> Void in method()})
+        msgAlert.addAction(defaultAction)
+        
+        willMoveToParentViewController(self)
+        
+        //メッセージ表示
+        presentViewController(msgAlert,animated: true, completion: nil)
+    }
+    
+    /**
      画面タッチでキーボードを閉じる。
      */
     @IBAction func tapScrn(sender: AnyObject) {
