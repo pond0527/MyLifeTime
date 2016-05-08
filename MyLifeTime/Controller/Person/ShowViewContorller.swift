@@ -58,7 +58,7 @@ class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDa
     func tableView(table: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         prsns = Person.loadAll()
-        return prsns.count
+        return prsns.count > 10 ? 10 : prsns.count
     }
     
     /**

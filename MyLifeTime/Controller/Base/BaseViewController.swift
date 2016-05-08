@@ -116,7 +116,7 @@ class BaseViewController: UIViewController, LTMorphingLabelDelegate {
 
 enum Color {
     
-    case LightPink, LightYellow, LightGreen, LightPurple, LightGrey
+    case LightPink, LightYellow, LightGreen, LightPurple, LightGrey, White
         
     func get() -> UIColor {
         switch self {
@@ -130,6 +130,8 @@ enum Color {
             return UIColor(red: 0.8, green: 0.8, blue: 1.0, alpha: 1.0)
         case .LightGrey:
             return UIColor(white: 0.85, alpha: 1.0)
+        case .White:
+            return UIColor.whiteColor()
         }
     }
 }

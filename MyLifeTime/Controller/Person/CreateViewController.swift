@@ -18,6 +18,7 @@ class CreateViewController: BaseViewController, UIToolbarDelegate {
     var toolBar:UIToolbar!
     var birthDatePicker: UIDatePicker!
     var bondDatePicker: UIDatePicker!
+    var colorPiker: UIPickerView!
     
     @IBOutlet weak var lblSts: UILabel!
     @IBOutlet weak var swchBndSts: RAMPaperSwitch!
@@ -26,6 +27,7 @@ class CreateViewController: BaseViewController, UIToolbarDelegate {
     @IBOutlet weak var lblBondDay: UILabel!
     @IBOutlet weak var txtBirthDt: UITextField!
     @IBOutlet weak var txtBondDt: UITextField!
+    @IBOutlet weak var txtBondColor: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,19 +58,15 @@ class CreateViewController: BaseViewController, UIToolbarDelegate {
      */
     func setup() {
         
-        // 生年月日の設定
+        // 生年月日/出逢日の設定
         birthDatePicker = UIDatePicker()
-        birthDatePicker.addTarget(self, action: #selector(CreateViewController.changeBirthDate(_:)), forControlEvents: UIControlEvents.ValueChanged)
         birthDatePicker.datePickerMode = UIDatePickerMode.Date
-        txtBirthDt.inputView = birthDatePicker
+        birthDatePicker.addTarget(self, action: #selector(CreateViewController.changeBirthDate(_:)), forControlEvents: UIControlEvents.ValueChanged)
         
-        // 出逢日の設定
         bondDatePicker = UIDatePicker()
-        bondDatePicker.addTarget(self, action: #selector(CreateViewController.changeBondDate(_:)), forControlEvents: UIControlEvents.ValueChanged)
         bondDatePicker.datePickerMode = UIDatePickerMode.Date
-        txtBondDt.inputView = bondDatePicker
+        bondDatePicker.addTarget(self, action: #selector(CreateViewController.changeBondDate(_:)), forControlEvents: UIControlEvents.ValueChanged)
         
-        // UIToolBarの設定
         toolBar = UIToolbar(frame: CGRectMake(0, self.view.frame.size.height/6, self.view.frame.size.width, 40.0))
         toolBar.layer.position = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height-20.0)
         toolBar.barStyle = .BlackTranslucent
@@ -78,8 +76,18 @@ class CreateViewController: BaseViewController, UIToolbarDelegate {
         toolBarBtn.tag = 1
         toolBar.items = [toolBarBtn]
         
+        txtBirthDt.inputView = birthDatePicker
         txtBirthDt.inputAccessoryView = toolBar
+        txtBondDt.inputView = bondDatePicker
         txtBondDt.inputAccessoryView = toolBar
+        
+//        //色の設定
+//        colorPiker = UIPickerView()
+//        colorPiker.showsSelectionIndicator = true
+//        colorPiker.tag = 1
+        
+//        txtBondColor.inputView = colorPiker
+//        txtBondColor.inputAccessoryView = toolBar
         
         //一覧画面よりエンティティを受け取る
         self.prsn = appDlgt.prsn
@@ -96,23 +104,12 @@ class CreateViewController: BaseViewController, UIToolbarDelegate {
             txtBondDt.text =
                 !editPrsn.bondYear.isEmpty ? dateToString(NSDate(year: Int(editPrsn.bondYear)!, month: Int(editPrsn.bondMonth)!, day: Int(editPrsn.bondDay)!)) : ""
             bondDatePicker.date = !editPrsn.bondYear.isEmpty ? NSDate(year: Int(editPrsn.bondYear)!, month: Int(editPrsn.bondMonth)!, day: Int(editPrsn.bondDay)!) : NSDate.today()
-            
             if(!editPrsn.bondColor.isEmpty) {
-                
-                switch editPrsn.bondColor {
-                case Color.LightGreen.get():
-                    return swchBndSts.onTintColor = Color.LightGreen.get()
-                case Color.LightGrey.get():
-                    return swchBndSts.onTintColor = Color.LightGrey.get()
-                case Color.LightPink.get():
-                    return swchBndSts.onTintColor = Color.LightPink.get()
-                case Color.LightPurple.get():
-                    return swchBndSts.onTintColor = Color.LightPurple.get()
-                case Color.LightYellow.get():
-                    return swchBndSts.onTintColor = Color.LightYellow.get()
-                default:
-                    return swchBndSts.onTintColor = UIColor.whiteColor()
-                }  
+                swchBndSts.enabled = true
+                swchBndSts.onTintColor = getBondColor(editPrsn.bondColor).get()
+                self.view.backgroundColor = getBondColor(editPrsn.bondColor).get()
+            } else {
+                swchBndSts.enabled = false
             }
         }
         
@@ -136,7 +133,7 @@ class CreateViewController: BaseViewController, UIToolbarDelegate {
      */
     func changeBondDate(sender:AnyObject?){
         
-        txtBondDt.text = dateToString(birthDatePicker.date)
+        txtBondDt.text = dateToString(bondDatePicker.date)
     }
     
     /**
@@ -184,7 +181,6 @@ class CreateViewController: BaseViewController, UIToolbarDelegate {
     @IBAction func tapCreateBtn(sender: AnyObject) {
         
         var cratSts = "新規登録"
-        
         //TODO:入力チェック実装予定
         
         //ユーザ情報を登録
@@ -217,9 +213,8 @@ class CreateViewController: BaseViewController, UIToolbarDelegate {
                     editPrsn.bondMonth = ""
                     editPrsn.bondDay = ""
                 }
+                editPrsn.bondColor = self.txtBondColor.text!
             })
-            
-            
         } else {
             
             //新規
@@ -248,6 +243,7 @@ class CreateViewController: BaseViewController, UIToolbarDelegate {
                 newPrsn.bondMonth = ""
                 newPrsn.bondDay = ""
             }
+            newPrsn.bondColor = txtBondColor.text!
             newPrsn.save()
         }
         
@@ -272,6 +268,43 @@ class CreateViewController: BaseViewController, UIToolbarDelegate {
         } else {
             lblBondDay.hidden = true
             txtBondDt.hidden = true
+        }
+    }
+    
+    /**
+     色変更時。
+     
+     - parameter sender: <#sender description#>
+     */
+    @IBAction func editEndBondColor(sender: AnyObject) {
+        
+        guard let txtColor = txtBondColor else { return swchBndSts.enabled = false}
+        swchBndSts.enabled = true
+        swchBndSts.onTintColor = getBondColor(txtColor.text!).get()
+    }
+    
+    /**
+     文字列(赤,黄,etc..)からColorを取得
+     
+     - parameter strColor: 検索文字
+     
+     - returns: 対象Color情報
+     */
+    func getBondColor(strColor: String) -> Color {
+        
+        switch strColor {
+        case "緑":
+            return Color.LightGreen
+        case "灰色":
+            return Color.LightGrey
+        case "赤":
+            return Color.LightPink
+        case "紫":
+            return Color.LightPurple
+        case "黄":
+            return Color.LightYellow
+        default:
+            return Color.White
         }
     }
     

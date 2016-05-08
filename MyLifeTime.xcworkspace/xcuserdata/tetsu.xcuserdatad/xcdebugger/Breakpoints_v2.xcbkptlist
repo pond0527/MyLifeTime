@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyLifeTime/Controller/Person/CreateViewController.swift"
-            timestampString = "484306372.191879"
+            timestampString = "484361981.486914"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
             landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
@@ -168,11 +168,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyLifeTime/Controller/Person/CreateViewController.swift"
-            timestampString = "484307682.357256"
+            timestampString = "484361981.486914"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "setup()"
             landmarkType = "5">
          </BreakpointContent>
@@ -184,13 +184,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyLifeTime/Controller/Person/CreateViewController.swift"
-            timestampString = "484307682.357256"
+            timestampString = "484361981.486914"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
             landmarkName = "setup()"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyLifeTime.CreateViewController.setup () -&gt; ()"
+                  moduleName = "MyLifeTime"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tetsu/Desktop/XcodePrj/MyLifeTime/MyLifeTime/Controller/Person/CreateViewController.swift"
+                  timestampString = "484362489.83886"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "96"
+                  endingLineNumber = "96"
+                  offsetFromSymbolStart = "4404">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyLifeTime.CreateViewController.setup () -&gt; ()"
+                  moduleName = "MyLifeTime"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tetsu/Desktop/XcodePrj/MyLifeTime/MyLifeTime/Controller/Person/CreateViewController.swift"
+                  timestampString = "484362489.839025"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "96"
+                  endingLineNumber = "96"
+                  offsetFromSymbolStart = "4448">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -200,11 +232,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyLifeTime/Controller/Person/CreateViewController.swift"
-            timestampString = "484307923.007944"
+            timestampString = "484411390.55304"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "191"
-            endingLineNumber = "191"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
             landmarkName = "tapCreateBtn(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -216,11 +248,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyLifeTime/Controller/Person/CreateViewController.swift"
-            timestampString = "484307923.007944"
+            timestampString = "484361981.486914"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
             landmarkName = "setup()"
             landmarkType = "5">
          </BreakpointContent>
@@ -232,11 +264,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyLifeTime/Controller/Person/CreateViewController.swift"
-            timestampString = "484307682.357256"
+            timestampString = "484411390.55304"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "255"
-            endingLineNumber = "255"
+            startingLineNumber = "251"
+            endingLineNumber = "251"
             landmarkName = "tapCreateBtn(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -248,11 +280,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyLifeTime/Controller/Person/CreateViewController.swift"
-            timestampString = "484306372.191879"
+            timestampString = "484361981.486914"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
             landmarkName = "setup()"
             landmarkType = "5">
          </BreakpointContent>
@@ -327,11 +359,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyLifeTime/Controller/Person/CreateViewController.swift"
-            timestampString = "484307923.007944"
+            timestampString = "484411390.55304"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
             landmarkName = "dateToString(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -343,12 +375,92 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyLifeTime/Controller/Person/CreateViewController.swift"
-            timestampString = "484307923.007944"
+            timestampString = "484411390.55304"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
             landmarkName = "changeBirthDate(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyLifeTime/Controller/Base/BaseViewController.swift"
+            timestampString = "484361476.692411"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
+            landmarkName = "get()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyLifeTime/Controller/Person/CreateViewController.swift"
+            timestampString = "484365258.099559"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "setup()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyLifeTime/Controller/Person/CreateViewController.swift"
+            timestampString = "484363459.112023"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "setup()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyLifeTime/Controller/Person/CreateViewController.swift"
+            timestampString = "484411390.55304"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "changeBirthDate(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyLifeTime/Controller/Person/CreateViewController.swift"
+            timestampString = "484411390.55304"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
+            landmarkName = "changeBondDate(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
