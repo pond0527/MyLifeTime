@@ -201,4 +201,12 @@ class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDa
         tblPrsn.reloadData()
         
     }
+    
+    /**
+     CreateViewControllerから遷移時。
+     
+     - parameter segue: <#segue description#>
+     */
+    @IBAction func backFromCreateView(segue:UIStoryboardSegue){
+    }
 }
