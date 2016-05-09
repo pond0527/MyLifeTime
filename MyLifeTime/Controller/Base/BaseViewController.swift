@@ -117,7 +117,13 @@ class BaseViewController: UIViewController, LTMorphingLabelDelegate {
 enum Color {
     
     case LightPink, LightYellow, LightGreen, LightPurple, LightGrey, White
-        
+    static let list: [Color] = [Color.LightPink, Color.LightYellow, Color.LightGreen, Color.LightPurple, Color.LightGrey, Color.White]
+    
+    /**
+     要素のUIColorを取得します。
+     
+     - returns: <#return value description#>
+     */
     func get() -> UIColor {
         switch self {
         case .LightPink:
@@ -133,6 +139,37 @@ enum Color {
         case .White:
             return UIColor.whiteColor()
         }
+    }
+    
+    /**
+     要素の名称を取得します。
+     
+     - returns: <#return value description#>
+     */
+    func name() -> String {
+        switch self {
+        case .LightPink:
+            return "Pink"
+        case .LightYellow:
+            return "Yellow"
+        case .LightGreen:
+            return "Green"
+        case .LightPurple:
+            return "Purple"
+        case .LightGrey:
+            return "Grey"
+        case .White:
+            return ""
+        }
+    }
+    
+    /**
+     要素数を取得します。
+     
+     - returns: <#return value description#>
+     */
+    static func count() -> Int{
+        return Color.list.count
     }
 }
 
