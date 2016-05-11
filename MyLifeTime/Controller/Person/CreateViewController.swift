@@ -236,23 +236,6 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
     }
     
     /**
-     日付整形を行います。
-     
-     - parameter date: <#date description#>
-     
-     - returns: <#return value description#>
-     */
-    func dateToString(date:NSDate) -> String {
-        
-        let dateFormat: NSDateFormatter = NSDateFormatter()
-        
-        dateFormat.locale = NSLocale(localeIdentifier: "ja")
-        dateFormat.dateFormat = "yyyy/MM/dd"
-        
-        return dateFormat.stringFromDate(date)
-    }
-    
-    /**
      絆ステータス変更時。
      
      - parameter sender: <#sender description#>
@@ -340,9 +323,6 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
         
         //遷移する画面を定義
         showEditMessage(cratSts, fixedMsg: "%@ 様 の%@ が完了しました。\n 一覧画面に戻ります。", msgArgs: [txtNm.text!, cratSts])
-    }
-    
-    @IBAction func unwindToTop(segue: UIStoryboardSegue) {
     }
     
     /**

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftDate
 
 class MltViewController: BaseViewController {
     
@@ -26,7 +27,26 @@ class MltViewController: BaseViewController {
      - parameter animated: <#animated description#>
      */
     override func viewDidAppear(animated: Bool) {
-        showErrorMessage("テスト", msg: "M・L・Tタブ")
+        
+        // TODO: ユーザの誕生日を設定
+        elapsedTime(1995, month: 2, day: 7)
     }
     
+    /**
+     経過時間を取得します。
+     */
+    func elapsedTime(year: Int, month: Int, day: Int) {
+        
+        let date = NSDate(year: year, month: month, day: day)
+        
+        // 経過時間の取得
+        let pastTime = dtNow.timeIntervalSinceDate(date)
+        
+        // xxxx日
+        let spanDt = Int(pastTime/60/60/24)
+        
+        showErrorMessage("経過時間", msg: "\(spanDt)日\(NSDate().hour)時間\(NSDate().minute)分\(NSDate().second)秒")
+        
+        print("経過時間：\(spanDt)")
+    }
 }

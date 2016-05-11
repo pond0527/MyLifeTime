@@ -13,6 +13,7 @@ import SCLAlertView
 class BaseViewController: UIViewController, LTMorphingLabelDelegate {
     
     let alertView = SCLAlertView()
+    let dtNow = NSDate()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +36,7 @@ class BaseViewController: UIViewController, LTMorphingLabelDelegate {
      */
     func showErrorMessage(titleName: String, msg: String) {
         
-        alertView.showTitle(titleName, subTitle: msg, style: SCLAlertViewStyle.Error, closeButtonTitle: "OK", duration: 10.0, colorStyle: msgType.Error.colorInt, colorTextButton: 0xFFFFFF, circleIconImage: nil)
+        alertView.showTitle(titleName, subTitle: msg, style: SCLAlertViewStyle.Error, closeButtonTitle: "OK", duration: 10.0, colorStyle: MassageType.Error.colorInt, colorTextButton: 0xFFFFFF, circleIconImage: nil)
     }
     
     /**
@@ -46,7 +47,7 @@ class BaseViewController: UIViewController, LTMorphingLabelDelegate {
      - parameter msgArgs:   代入文字列
      */
     func showEditMessage(titleName: String, fixedMsg: String, msgArgs: [CVarArgType]) {
-        alertView.showTitle(titleName, subTitle: NSString(format: fixedMsg, arguments: getVaList(msgArgs)) as String, style: SCLAlertViewStyle.Edit, closeButtonTitle: "OK", duration: 10.0, colorStyle: 0xA429FF, colorTextButton: msgType.Edit.colorInt, circleIconImage: nil)
+        alertView.showTitle(titleName, subTitle: NSString(format: fixedMsg, arguments: getVaList(msgArgs)) as String, style: SCLAlertViewStyle.Edit, closeButtonTitle: "OK", duration: 10.0, colorStyle: 0xA429FF, colorTextButton: MassageType.Edit.colorInt, circleIconImage: nil)
     }
 
     /**
@@ -70,6 +71,23 @@ class BaseViewController: UIViewController, LTMorphingLabelDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    /**
+     日付整形を行います。
+     
+     - parameter date: <#date description#>
+     
+     - returns: <#return value description#>
+     */
+    func dateToString(date:NSDate, format: String = "yyyy/MM/dd") -> String {
+        
+        let dateFormat: NSDateFormatter = NSDateFormatter()
+        
+        dateFormat.locale = NSLocale(localeIdentifier: "ja")
+        dateFormat.dateFormat = format
+        
+        return dateFormat.stringFromDate(date)
     }
 }
 
@@ -131,7 +149,7 @@ enum Color {
     }
 }
 
-private enum msgType {
+private enum MassageType {
     case Success, Error, Notice, Warning, Info, Edit, Wait
     
     var colorInt: UInt {
@@ -153,6 +171,5 @@ private enum msgType {
         }
         
     }
-    
 }
 

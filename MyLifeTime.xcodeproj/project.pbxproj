@@ -12,8 +12,6 @@
 		9710F5F91CD9BBF500C58BE2 /* tabMLT.png in Resources */ = {isa = PBXBuildFile; fileRef = 9710F5F61CD9BBF500C58BE2 /* tabMLT.png */; };
 		9710F5FA1CD9BBF500C58BE2 /* tabPerson.png in Resources */ = {isa = PBXBuildFile; fileRef = 9710F5F71CD9BBF500C58BE2 /* tabPerson.png */; };
 		979577051CDB6B79007B15DC /* RAMPaperSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979577041CDB6B79007B15DC /* RAMPaperSwitch.swift */; };
-		97FD3C881CDDD24300335299 /* SelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FD3C871CDDD24300335299 /* SelectViewController.swift */; };
-		97FD3C8A1CDDD2F100335299 /* SelectView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97FD3C891CDDD2F100335299 /* SelectView.storyboard */; };
 		97FDC7471CD8A12F00692C30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FDC7461CD8A12F00692C30 /* AppDelegate.swift */; };
 		97FDC7491CD8A12F00692C30 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FDC7481CD8A12F00692C30 /* BaseViewController.swift */; };
 		97FDC74C1CD8A12F00692C30 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97FDC74A1CD8A12F00692C30 /* Main.storyboard */; };
@@ -114,8 +112,6 @@
 		9710F5F61CD9BBF500C58BE2 /* tabMLT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabMLT.png; sourceTree = "<group>"; };
 		9710F5F71CD9BBF500C58BE2 /* tabPerson.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabPerson.png; sourceTree = "<group>"; };
 		979577041CDB6B79007B15DC /* RAMPaperSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMPaperSwitch.swift; sourceTree = "<group>"; };
-		97FD3C871CDDD24300335299 /* SelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectViewController.swift; sourceTree = "<group>"; };
-		97FD3C891CDDD2F100335299 /* SelectView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SelectView.storyboard; sourceTree = "<group>"; };
 		97FDC7431CD8A12F00692C30 /* MyLifeTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyLifeTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97FDC7461CD8A12F00692C30 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97FDC7481CD8A12F00692C30 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -340,7 +336,6 @@
 			children = (
 				97FDC7521CD8A12F00692C30 /* LaunchScreen.storyboard */,
 				97FDC74A1CD8A12F00692C30 /* Main.storyboard */,
-				97FD3C891CDDD2F100335299 /* SelectView.storyboard */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -350,7 +345,6 @@
 			children = (
 				97FDC7461CD8A12F00692C30 /* AppDelegate.swift */,
 				97FDC7481CD8A12F00692C30 /* BaseViewController.swift */,
-				97FD3C871CDDD24300335299 /* SelectViewController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -694,7 +688,6 @@
 				97FDC7511CD8A12F00692C30 /* Assets.xcassets in Resources */,
 				97FDC74C1CD8A12F00692C30 /* Main.storyboard in Resources */,
 				97FDC7F21CD8AC7E00692C30 /* Fire.png in Resources */,
-				97FD3C8A1CDDD2F100335299 /* SelectView.storyboard in Resources */,
 				9710F5F91CD9BBF500C58BE2 /* tabMLT.png in Resources */,
 				97FDC7941CD8A68900692C30 /* Person.storyboard in Resources */,
 				97FDC7C01CD8AC6800692C30 /* Info.plist in Resources */,
@@ -900,7 +893,6 @@
 				97FDC7BA1CD8AC6800692C30 /* DesignableLabel.swift in Sources */,
 				97FDC7B61CD8AC6800692C30 /* AutoTextView.swift in Sources */,
 				97FDC7CC1CD8AC6800692C30 /* SpringTextView.swift in Sources */,
-				97FD3C881CDDD24300335299 /* SelectViewController.swift in Sources */,
 				97FDC7B81CD8AC6800692C30 /* DesignableButton.swift in Sources */,
 				97FDC78E1CD8A61800692C30 /* Person.swift in Sources */,
 				97FDC7891CD8A59700692C30 /* EditViewController.swift in Sources */,
