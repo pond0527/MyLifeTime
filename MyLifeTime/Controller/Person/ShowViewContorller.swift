@@ -174,11 +174,8 @@ class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDa
      */
     @IBAction func tapAddBtn(sender: AnyObject) {
         
-        //遷移する画面を定義
-        let stryBrd: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let mvViewController = stryBrd.instantiateViewControllerWithIdentifier("CreateViewController")
-        mvViewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
-        self.presentViewController(mvViewController, animated: true, completion: nil)
+        // showViewControllers へ遷移するために Segue を呼び出す
+        performSegueWithIdentifier("showViewController",sender: nil)
     }
     
     /**

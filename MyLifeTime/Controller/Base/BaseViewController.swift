@@ -8,8 +8,11 @@
 
 import UIKit
 import SwiftDate
+import SCLAlertView
 
 class BaseViewController: UIViewController, LTMorphingLabelDelegate {
+    
+    let alertView = SCLAlertView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,16 +33,9 @@ class BaseViewController: UIViewController, LTMorphingLabelDelegate {
      - parameter titleName: タイトル名
      - parameter msg:       本文
      */
-    func showMessage(titleName: String, msg: String) {
+    func showErrorMessage(titleName: String, msg: String) {
         
-        let msgAlert = UIAlertController(title: titleName, message: msg, preferredStyle: .Alert)
-        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler:{(action:UIAlertAction!) -> Void in })
-        msgAlert.addAction(defaultAction)
-        
-        willMoveToParentViewController(self)
-        
-        //メッセージ表示
-        presentViewController(msgAlert,animated: true, completion: nil)
+        alertView.showTitle(titleName, subTitle: msg, style: SCLAlertViewStyle.Error, closeButtonTitle: "OK", duration: 10.0, colorStyle: msgType.Error.colorInt, colorTextButton: 0xFFFFFF, circleIconImage: nil)
     }
     
     /**
@@ -48,46 +44,9 @@ class BaseViewController: UIViewController, LTMorphingLabelDelegate {
      - parameter titleName: タイトル名
      - parameter fixedMsg:  固定文字列
      - parameter msgArgs:   代入文字列
-     - parameter method:    ボタン押下後処理
      */
-    func showMessage(titleName: String, fixedMsg: String, msgArgs: [CVarArgType], method: (() -> Void)) {
-        
-        let msgAlert = UIAlertController(title: titleName, message: NSString(format: fixedMsg, arguments: getVaList(msgArgs)) as String, preferredStyle: .Alert)
-        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler:{(action:UIAlertAction!) -> Void in method()})
-        msgAlert.addAction(defaultAction)
-        
-        willMoveToParentViewController(self)
-        
-        //メッセージ表示
-        presentViewController(msgAlert,animated: true, completion: nil)
-    }
-    
-    /**
-     メッセージを表示します。
-     
-     - parameter titleName: タイトル名
-     - parameter msg:       本文
-     - parameter method:    ボタン押下後処理
-     */
-    func showMessage(titleName: String, msg: String, method: (() -> Void)) {
-        
-        let msgAlert = UIAlertController(title: titleName, message: msg, preferredStyle: .Alert)
-        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: {(action:UIAlertAction!) -> Void in method()})
-        msgAlert.addAction(defaultAction)
-        
-        willMoveToParentViewController(self)
-        
-        //メッセージ表示
-        presentViewController(msgAlert,animated: true, completion: nil)
-    }
-    
-    /**
-     画面タッチでキーボードを閉じる。
-     */
-    @IBAction func tapScrn(sender: AnyObject) {
-        
-        //        txtName.resignFirstResponder()
-        //        txtPhone.resignFirstResponder()
+    func showEditMessage(titleName: String, fixedMsg: String, msgArgs: [CVarArgType]) {
+        alertView.showTitle(titleName, subTitle: NSString(format: fixedMsg, arguments: getVaList(msgArgs)) as String, style: SCLAlertViewStyle.Edit, closeButtonTitle: "OK", duration: 10.0, colorStyle: 0xA429FF, colorTextButton: msgType.Edit.colorInt, circleIconImage: nil)
     }
 
     /**
@@ -115,7 +74,6 @@ class BaseViewController: UIViewController, LTMorphingLabelDelegate {
 }
 
 enum Color {
-    
     case LightPink, LightYellow, LightGreen, LightPurple, LightGrey, White
     static let list: [Color] = [Color.LightPink, Color.LightYellow, Color.LightGreen, Color.LightPurple, Color.LightGrey, Color.White]
     
@@ -171,5 +129,30 @@ enum Color {
     static func count() -> Int{
         return Color.list.count
     }
+}
+
+private enum msgType {
+    case Success, Error, Notice, Warning, Info, Edit, Wait
+    
+    var colorInt: UInt {
+        switch self {
+        case Success:
+            return 0x22B573
+        case Error:
+            return 0xC1272D
+        case Notice:
+            return 0x727375
+        case Warning:
+            return 0xFFD110
+        case Info:
+            return 0x2866BF
+        case Edit:
+            return 0xA429FF
+        case Wait:
+            return 0xD62DA5
+        }
+        
+    }
+    
 }
 

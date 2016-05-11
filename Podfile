@@ -6,15 +6,18 @@ use_frameworks!
 target 'MyLifeTime' do
 pod 'RealmSwift'
 pod 'SwiftDate', git: 'https://github.com/malcommac/SwiftDate.git'
+pod 'SCLAlertView'
 end
 
 target 'MyLifeTimeTests' do
 pod 'RealmSwift'
 pod 'SwiftDate', git: 'https://github.com/malcommac/SwiftDate.git'
+pod 'SCLAlertView'
 end
 
 target 'MyLifeTimeUITests' do
 pod 'RealmSwift'
 pod 'SwiftDate', git: 'https://github.com/malcommac/SwiftDate.git'
+pod 'SCLAlertView'
 end
 

@@ -26,7 +26,7 @@ class EditViewController: BaseViewController {
      - parameter animated: <#animated description#>
      */
     override func viewDidAppear(animated: Bool) {
-        showMessage("テスト", msg: "Editタブ")
+        showErrorMessage("テスト", msg: "Editタブ")
     }
     
 }

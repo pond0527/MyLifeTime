@@ -60,11 +60,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <customObject id="ZtM-hq-Cdp" customClass="RAMLeftRotationAnimation" customModule="MyLifeTime" customModuleProvider="target"/>
-                <tapGestureRecognizer cancelsTouchesInView="NO" id="60W-qH-Vnn">
-                    <connections>
-                        <action selector="tapScrn:" destination="BYZ-38-t0r" id="9zV-zx-R1o"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <tapGestureRecognizer cancelsTouchesInView="NO" id="60W-qH-Vnn"/>
             </objects>
             <point key="canvasLocation" x="693" y="375"/>
         </scene>
@@ -85,7 +81,7 @@
                                 <items>
                                     <barButtonItem title="&lt;戻る" id="gDc-I8-WWI">
                                         <connections>
-                                            <segue destination="cRR-jM-Rip" kind="unwind" unwindAction="backFromCreateView:" id="1Pa-Ne-XG0"/>
+                                            <segue destination="cRR-jM-Rip" kind="unwind" identifier="" unwindAction="backFromCreateView:" id="1Pa-Ne-XG0"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="h8e-VM-b8z"/>

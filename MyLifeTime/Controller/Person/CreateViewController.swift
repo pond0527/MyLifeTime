@@ -59,7 +59,7 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
      */
     func setup() {
         
-        // 生年月日/出逢日の設定
+        // 生年月日・出逢日の設定
         birthDatePicker = UIDatePicker()
         birthDatePicker.datePickerMode = UIDatePickerMode.Date
         birthDatePicker.addTarget(self, action: #selector(CreateViewController.changeBirthDate(_:)), forControlEvents: UIControlEvents.ValueChanged)
@@ -73,9 +73,9 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
         dtToolBar.barStyle = .BlackTranslucent
         dtToolBar.tintColor = UIColor.whiteColor()
         dtToolBar.backgroundColor = UIColor.blackColor()
-        let dtToolBarBtn = UIBarButtonItem(title: "完了", style: .Plain, target: self, action: #selector(CreateViewController.tappedDtToolBarBtn(_:)))
-        dtToolBarBtn.tag = 1
-        dtToolBar.items = [dtToolBarBtn]
+        let dtToolBarCompleteBtn = UIBarButtonItem(title: "完了", style: .Plain, target: self, action: #selector(CreateViewController.tappedDtToolBarCompleteBtn(_:)))
+        dtToolBarCompleteBtn.tag = 1
+        dtToolBar.items = [dtToolBarCompleteBtn]
         
         txtBirthDt.inputView = birthDatePicker
         txtBirthDt.inputAccessoryView = dtToolBar
@@ -94,9 +94,11 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
         colorToolBar.barStyle = .BlackTranslucent
         colorToolBar.tintColor = UIColor.whiteColor()
         colorToolBar.backgroundColor = UIColor.blackColor()
-        let colorToolBarBtn = UIBarButtonItem(title: "完了", style: .Plain, target: self, action: #selector(CreateViewController.tappedColorToolBarBtn(_:)))
-        colorToolBarBtn.tag = 1
-        colorToolBar.items = [colorToolBarBtn]
+        let colorToolBarCompleteBtn = UIBarButtonItem(title: "完了", style: .Plain, target: self, action: #selector(CreateViewController.tappedColorToolBarCompleteBtn(_:)))
+        let colorToolBarClearBtn = UIBarButtonItem(title: "クリア", style: .Plain, target: self, action: #selector(CreateViewController.tappedDtToolBarClearBtn(_:)))
+        colorToolBarCompleteBtn.tag = 1
+        colorToolBarClearBtn.tag = 2
+        colorToolBar.items = [colorToolBarCompleteBtn, colorToolBarClearBtn]
         
         txtBondColor.inputView = colorPiker
         txtBondColor.inputAccessoryView = colorToolBar
@@ -112,17 +114,17 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
             birthDatePicker.date = !editPrsn.year.isEmpty ? NSDate(year: Int(editPrsn.year)!, month: Int(editPrsn.month)!, day: Int(editPrsn.day)!) : NSDate.today()
             let sexIndex = editPrsn.sex == "男性" ? 0 : 1
             slctSex.selectedSegmentIndex = sexIndex
-            swchBndSts.setOn(editPrsn.bondSts, animated: true)
-            txtBondDt.text =
-                !editPrsn.bondYear.isEmpty ? dateToString(NSDate(year: Int(editPrsn.bondYear)!, month: Int(editPrsn.bondMonth)!, day: Int(editPrsn.bondDay)!)) : ""
+            txtBondDt.text = !editPrsn.bondYear.isEmpty ? dateToString(NSDate(year: Int(editPrsn.bondYear)!, month: Int(editPrsn.bondMonth)!, day: Int(editPrsn.bondDay)!)) : ""
             bondDatePicker.date = !editPrsn.bondYear.isEmpty ? NSDate(year: Int(editPrsn.bondYear)!, month: Int(editPrsn.bondMonth)!, day: Int(editPrsn.bondDay)!) : NSDate.today()
             if(!editPrsn.bondColor.isEmpty) {
+                txtBondColor.text = editPrsn.bondColor
                 swchBndSts.enabled = true
                 swchBndSts.onTintColor = getBondColor(editPrsn.bondColor).get()
                 self.view.backgroundColor = getBondColor(editPrsn.bondColor).get()
             } else {
                 swchBndSts.enabled = false
             }
+            swchBndSts.setOn(editPrsn.bondSts, animated: true)
         }
         
         controlActiveBoundSts()
@@ -186,7 +188,7 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
      
      - parameter sender: <#sender description#>
      */
-    func tappedDtToolBarBtn(sender: UIBarButtonItem) {
+    func tappedDtToolBarCompleteBtn(sender: UIBarButtonItem) {
         
         txtBondDt.resignFirstResponder()
         txtBirthDt.resignFirstResponder()
@@ -199,23 +201,38 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
     }
     
     /**
-     PikerView「完了」押下時。
+     絆ステータス(カラー)「完了」押下時。
      
      - parameter sender: <#sender description#>
      */
-    func tappedColorToolBarBtn(sender: UIBarButtonItem) {
+    func tappedColorToolBarCompleteBtn(sender: UIBarButtonItem) {
         
         if(txtBondColor.text!.isEmpty) {
             swchBndSts.enabled = false
             swchBndSts.onTintColor = Color.White.get()
+            self.view.backgroundColor = Color.White.get()
+            swchBndSts.setOn(false, animated: true)
+            changeBondSts(self)
         } else {
-            swchBndSts.setOn(true, animated: true)
             swchBndSts.enabled = true
             swchBndSts.onTintColor = getBondColor(txtBondColor.text!).get()
             self.view.backgroundColor = getBondColor(txtBondColor.text!).get()
+            swchBndSts.setOn(false, animated: true)
+            swchBndSts.setOn(true, animated: true)
+            changeBondSts(self)
         }
         
         txtBondColor.resignFirstResponder()
+    }
+    
+    /**
+     絆ステータス(カラー)「クリア」押下時。
+     
+     - parameter sender: <#sender description#>
+     */
+    func tappedDtToolBarClearBtn(sender: UIBarButtonItem) {
+        
+        txtBondColor.text = ""
     }
     
     /**
@@ -227,12 +244,12 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
      */
     func dateToString(date:NSDate) -> String {
         
-        let date_formatter: NSDateFormatter = NSDateFormatter()
+        let dateFormat: NSDateFormatter = NSDateFormatter()
         
-        date_formatter.locale     = NSLocale(localeIdentifier: "ja")
-        date_formatter.dateFormat = "yyyy/MM/dd"
+        dateFormat.locale = NSLocale(localeIdentifier: "ja")
+        dateFormat.dateFormat = "yyyy/MM/dd"
         
-        return date_formatter.stringFromDate(date)
+        return dateFormat.stringFromDate(date)
     }
     
     /**
@@ -242,7 +259,9 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
      */
     @IBAction func changeBondSts(sender: AnyObject) {
         
-        controlActiveBoundSts()
+        if !controlActiveBoundSts() {
+            txtBondColor.text = ""
+        }
     }
 
     /**
@@ -259,7 +278,7 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
         if let editPrsn = appDlgt.prsn {
             
             //編集
-            cratSts = "編集登録"
+            cratSts = "編集"
             editPrsn.update({
                 editPrsn.nm = self.txtNm.text!
                 let index = self.slctSex.selectedSegmentIndex
@@ -320,28 +339,32 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
         }
         
         //遷移する画面を定義
-        showMessage(cratSts, fixedMsg: "%@ 様 の%@ が完了しました。\n 一覧画面に戻ります。", msgArgs: [txtNm.text!, cratSts], method: {
-            let stryBrd: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let mvViewController = stryBrd.instantiateViewControllerWithIdentifier("ShowViewContorller")
-            mvViewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
-            self.presentViewController(mvViewController, animated: true, completion: nil)
-        })
+        showEditMessage(cratSts, fixedMsg: "%@ 様 の%@ が完了しました。\n 一覧画面に戻ります。", msgArgs: [txtNm.text!, cratSts])
+    }
+    
+    @IBAction func unwindToTop(segue: UIStoryboardSegue) {
     }
     
     /**
      絆ステータスの状態により活性制御を行う。
      */
-    func controlActiveBoundSts() {
+    func controlActiveBoundSts() -> Bool{
+        
+         var rsltFlg = false
         
         //絆ステータスの状態により活性制御を行う
         if swchBndSts.on {
             lblBondDay.hidden = false
             txtBondDt.hidden = false
+            rsltFlg = true
         } else {
             lblBondDay.hidden = true
             txtBondDt.hidden = true
+            swchBndSts.onTintColor = Color.White.get()
             self.view.backgroundColor = Color.White.get()
         }
+        
+        return rsltFlg
     }
     
     /**

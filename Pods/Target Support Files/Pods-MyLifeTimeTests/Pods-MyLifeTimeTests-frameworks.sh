@@ -86,10 +86,12 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-MyLifeTimeTests/Realm.framework"
   install_framework "Pods-MyLifeTimeTests/RealmSwift.framework"
+  install_framework "Pods-MyLifeTimeTests/SCLAlertView.framework"
   install_framework "Pods-MyLifeTimeTests/SwiftDate.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-MyLifeTimeTests/Realm.framework"
   install_framework "Pods-MyLifeTimeTests/RealmSwift.framework"
+  install_framework "Pods-MyLifeTimeTests/SCLAlertView.framework"
   install_framework "Pods-MyLifeTimeTests/SwiftDate.framework"
 fi

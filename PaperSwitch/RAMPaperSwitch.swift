@@ -92,7 +92,7 @@ public class RAMPaperSwitch: UISwitch {
         
         showShapeIfNeed()
         
-        addTarget(self, action: "switchChanged", forControlEvents: UIControlEvents.ValueChanged)
+        addTarget(self, action: #selector(RAMPaperSwitch.switchChanged), forControlEvents: UIControlEvents.ValueChanged)
     }
     
     

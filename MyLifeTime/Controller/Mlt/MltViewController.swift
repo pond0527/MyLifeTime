@@ -26,7 +26,7 @@ class MltViewController: BaseViewController {
      - parameter animated: <#animated description#>
      */
     override func viewDidAppear(animated: Bool) {
-        showMessage("テスト", msg: "M・L・Tタブ")
+        showErrorMessage("テスト", msg: "M・L・Tタブ")
     }
     
 }
