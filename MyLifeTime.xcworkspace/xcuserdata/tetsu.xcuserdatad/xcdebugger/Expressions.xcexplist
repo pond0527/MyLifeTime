@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "CreateViewController.changeBondDate(AnyObject?) -&gt; ():CreateViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "dateToString(birthDatePicker.date)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CreateViewController.changeBirthDate(AnyObject?) -&gt; ():CreateViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "birthDatePicker.date">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CreateViewController.pickerView(UIPickerView, viewForRow : Int, forComponent : Int, reusingView : UIView?) -&gt; UIView:CreateViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "color.name()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CreateViewController.setup() -&gt; ():CreateViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "!editPrsn.year.isEmpty">
+            </PersistentString>
+            <PersistentString
+               value = "editPrsn.year">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
