@@ -108,22 +108,29 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
         
         //ユーザ情報を編集するか判定
         if let editPrsn = self.prsn {
+            
             txtNm.text = editPrsn.nm
+            
             txtBirthDt.text =
                 !editPrsn.year.isEmpty ? dateToString(NSDate(year: Int(editPrsn.year)!, month: Int(editPrsn.month)!, day: Int(editPrsn.day)!)) : ""
+            
             birthDatePicker.date = !editPrsn.year.isEmpty ? NSDate(year: Int(editPrsn.year)!, month: Int(editPrsn.month)!, day: Int(editPrsn.day)!) : NSDate.today()
-            let sexIndex = editPrsn.sex == "男性" ? 0 : 1
-            slctSex.selectedSegmentIndex = sexIndex
+            
+            slctSex.selectedSegmentIndex = editPrsn.sex == "男性" ? 0 : 1
+            
             txtBondDt.text = !editPrsn.bondYear.isEmpty ? dateToString(NSDate(year: Int(editPrsn.bondYear)!, month: Int(editPrsn.bondMonth)!, day: Int(editPrsn.bondDay)!)) : ""
+            
             bondDatePicker.date = !editPrsn.bondYear.isEmpty ? NSDate(year: Int(editPrsn.bondYear)!, month: Int(editPrsn.bondMonth)!, day: Int(editPrsn.bondDay)!) : NSDate.today()
+            
             if(!editPrsn.bondColor.isEmpty) {
                 txtBondColor.text = editPrsn.bondColor
                 swchBndSts.enabled = true
-                swchBndSts.onTintColor = getBondColor(editPrsn.bondColor).get()
-                self.view.backgroundColor = getBondColor(editPrsn.bondColor).get()
+                swchBndSts.onTintColor = Color.getInfo(editPrsn.bondColor).get()
+                self.view.backgroundColor = Color.getInfo(editPrsn.bondColor).get()
             } else {
                 swchBndSts.enabled = false
             }
+            
             swchBndSts.setOn(editPrsn.bondSts, animated: true)
         }
         
@@ -150,7 +157,7 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
      - returns: <#return value description#>
      */
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 5
+        return Color.count()
     }
     
     // セルをビューで表示
@@ -194,7 +201,13 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
         txtBirthDt.resignFirstResponder()
     }
     
-    //選択時
+    /**
+     カラー選択時。
+     
+     - parameter pickerView: <#pickerView description#>
+     - parameter row:        <#row description#>
+     - parameter component:  <#component description#>
+     */
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
 
         txtBondColor.text = Color.list[row].name()
@@ -215,8 +228,8 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
             changeBondSts(self)
         } else {
             swchBndSts.enabled = true
-            swchBndSts.onTintColor = getBondColor(txtBondColor.text!).get()
-            self.view.backgroundColor = getBondColor(txtBondColor.text!).get()
+            swchBndSts.onTintColor = Color.getInfo(txtBondColor.text!).get()
+            self.view.backgroundColor = Color.getInfo(txtBondColor.text!).get()
             swchBndSts.setOn(false, animated: true)
             swchBndSts.setOn(true, animated: true)
             changeBondSts(self)
@@ -256,6 +269,22 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
         
         var cratSts = "新規登録"
         //TODO:入力チェック実装予定
+        if txtNm.text!.isEmpty {
+            showErrorMessage(msg: "名前を入力して下さい")
+            return
+        }
+        if txtBirthDt.text!.isEmpty {
+            showErrorMessage(msg: "生年月日を入力して下さい")
+            return
+        }
+        if swchBndSts.on && txtBondColor.text!.isEmpty {
+            showErrorMessage(msg: "カラーを入力して下さい")
+            return
+        }
+        if swchBndSts.on && txtBondDt.text!.isEmpty {
+            showErrorMessage(msg: "出逢日を入力して下さい")
+            return
+        }
         
         //ユーザ情報を登録
         if let editPrsn = appDlgt.prsn {
@@ -322,7 +351,7 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
         }
         
         //遷移する画面を定義
-        showEditMessage(cratSts, fixedMsg: "%@ 様 の%@ が完了しました。\n 一覧画面に戻ります。", msgArgs: [txtNm.text!, cratSts])
+        showEditMessage(cratSts, fixedMsg: "%@ 様 の%@ が完了しました。", msgArgs: [txtNm.text!, cratSts])
     }
     
     /**
@@ -346,32 +375,7 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
         
         return rsltFlg
     }
-    
-    /**
-     文字列(赤,黄,etc..)からColorを取得
-     
-     - parameter strColor: 検索文字
-     
-     - returns: 対象Color情報
-     */
-    func getBondColor(strColor: String) -> Color {
-        
-        switch strColor {
-        case "Green":
-            return Color.LightGreen
-        case "Grey":
-            return Color.LightGrey
-        case "Pink":
-            return Color.LightPink
-        case "Purple":
-            return Color.LightPurple
-        case "Yellow":
-            return Color.LightYellow
-        default:
-            return Color.White
-        }
-    }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

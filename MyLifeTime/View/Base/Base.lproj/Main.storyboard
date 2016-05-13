@@ -215,7 +215,18 @@
                     <view key="view" contentMode="scaleToFill" id="Vza-Ke-baF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wjt-Z0-4Lm">
+                                <rect key="frame" x="0.0" y="-49" width="320" height="568"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Wjt-Z0-4Lm" firstAttribute="leading" secondItem="Vza-Ke-baF" secondAttribute="leading" id="K0H-fH-Sga"/>
+                            <constraint firstItem="Wjt-Z0-4Lm" firstAttribute="height" secondItem="Vza-Ke-baF" secondAttribute="height" id="NFs-dP-4JF"/>
+                            <constraint firstItem="Wjt-Z0-4Lm" firstAttribute="width" secondItem="Vza-Ke-baF" secondAttribute="width" id="llw-hX-I9k"/>
+                            <constraint firstItem="Wjt-Z0-4Lm" firstAttribute="bottom" secondItem="UcL-mw-MGO" secondAttribute="top" id="qOS-MQ-Dov"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="M・L・T" image="tabMLT.png" id="cTf-hw-Ws9" customClass="RAMAnimatedTabBarItem" customModule="MyLifeTime" customModuleProvider="target">
                         <connections>

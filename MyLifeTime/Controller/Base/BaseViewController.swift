@@ -12,7 +12,6 @@ import SCLAlertView
 
 class BaseViewController: UIViewController, LTMorphingLabelDelegate {
     
-    let alertView = SCLAlertView()
     let dtNow = NSDate()
 
     override func viewDidLoad() {
@@ -34,9 +33,10 @@ class BaseViewController: UIViewController, LTMorphingLabelDelegate {
      - parameter titleName: タイトル名
      - parameter msg:       本文
      */
-    func showErrorMessage(titleName: String, msg: String) {
+    func showErrorMessage(titleName: String = "エラー", msg: String) {
         
-        alertView.showTitle(titleName, subTitle: msg, style: SCLAlertViewStyle.Error, closeButtonTitle: "OK", duration: 10.0, colorStyle: MassageType.Error.colorInt, colorTextButton: 0xFFFFFF, circleIconImage: nil)
+        let alertView = SCLAlertView()
+        alertView.showTitle(titleName, subTitle: msg, style: SCLAlertViewStyle.Error, closeButtonTitle: "OK", duration: 5.0, colorStyle: MassageType.Error.colorInt, colorTextButton: 0xFFFFFF, circleIconImage: nil)
     }
     
     /**
@@ -47,7 +47,9 @@ class BaseViewController: UIViewController, LTMorphingLabelDelegate {
      - parameter msgArgs:   代入文字列
      */
     func showEditMessage(titleName: String, fixedMsg: String, msgArgs: [CVarArgType]) {
-        alertView.showTitle(titleName, subTitle: NSString(format: fixedMsg, arguments: getVaList(msgArgs)) as String, style: SCLAlertViewStyle.Edit, closeButtonTitle: "OK", duration: 10.0, colorStyle: 0xA429FF, colorTextButton: MassageType.Edit.colorInt, circleIconImage: nil)
+        
+        let alertView = SCLAlertView()
+        alertView.showTitle(titleName, subTitle: NSString(format: fixedMsg, arguments: getVaList(msgArgs)) as String, style: SCLAlertViewStyle.Edit, closeButtonTitle: "OK", duration: 5.0, colorStyle: 0xA429FF, colorTextButton: 0xFFFFFF, circleIconImage: nil)
     }
 
     /**
@@ -76,9 +78,10 @@ class BaseViewController: UIViewController, LTMorphingLabelDelegate {
     /**
      日付整形を行います。
      
-     - parameter date: <#date description#>
+     - parameter date:   整形対象となる日付
+     - parameter format: フォーマット
      
-     - returns: <#return value description#>
+     - returns: 整形後の日付
      */
     func dateToString(date:NSDate, format: String = "yyyy/MM/dd") -> String {
         
@@ -91,6 +94,7 @@ class BaseViewController: UIViewController, LTMorphingLabelDelegate {
     }
 }
 
+/// 絆ステータスで使用するカラーを定義します。
 enum Color {
     case LightPink, LightYellow, LightGreen, LightPurple, LightGrey, White
     static let list: [Color] = [Color.LightPink, Color.LightYellow, Color.LightGreen, Color.LightPurple, Color.LightGrey, Color.White]
@@ -98,7 +102,7 @@ enum Color {
     /**
      要素のUIColorを取得します。
      
-     - returns: <#return value description#>
+     - returns: UIColor
      */
     func get() -> UIColor {
         switch self {
@@ -120,7 +124,7 @@ enum Color {
     /**
      要素の名称を取得します。
      
-     - returns: <#return value description#>
+     - returns: 名称
      */
     func name() -> String {
         switch self {
@@ -142,13 +146,39 @@ enum Color {
     /**
      要素数を取得します。
      
-     - returns: <#return value description#>
+     - returns: 要素数
      */
     static func count() -> Int{
         return Color.list.count
     }
+    
+    /**
+     文字列(赤,黄,etc..)からColorを取得
+     
+     - parameter strColor: 検索文字
+     
+     - returns: 対象Color情報
+     */
+    static func getInfo(strColor: String) -> Color {
+        
+        switch strColor {
+        case "Green":
+            return Color.LightGreen
+        case "Grey":
+            return Color.LightGrey
+        case "Pink":
+            return Color.LightPink
+        case "Purple":
+            return Color.LightPurple
+        case "Yellow":
+            return Color.LightYellow
+        default:
+            return Color.White
+        }
+    }
 }
 
+/// アラートで使用するメッセージタイプを定義します。
 private enum MassageType {
     case Success, Error, Notice, Warning, Info, Edit, Wait
     
@@ -172,4 +202,3 @@ private enum MassageType {
         
     }
 }
-

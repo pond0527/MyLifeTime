@@ -45,6 +45,9 @@ class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDa
         if prsns.count == 0 {
             setup()
         }
+        
+        // 一覧を再読込
+        tblPrsn.reloadData()
     }
     
     /**
@@ -53,7 +56,7 @@ class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDa
      - parameter table:   <#table description#>
      - parameter section: <#section description#>
      
-     - returns: <#return value description#>
+     - returns: 最大明細10行
      */
     func tableView(table: UITableView, numberOfRowsInSection section: Int) -> Int {
         
