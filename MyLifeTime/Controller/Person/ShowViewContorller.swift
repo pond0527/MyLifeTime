@@ -86,7 +86,6 @@ class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDa
     func tableView(table: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         prsns = Person.loadAll()
-        
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
         
         if prsns.count > 0 {
@@ -132,7 +131,7 @@ class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDa
         prsns = Person.loadAll()
         if editingStyle == UITableViewCellEditingStyle.Delete {
             
-            //指定してユーザを削除
+            //指定したユーザを削除
             Person.delete(prsns[indexPath.row].id)
             
             // TableViewを再読込
@@ -151,23 +150,10 @@ class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDa
      */
     func setup() {
         
-        //初期ユーザ登録用アラートダイアログ生成
-        let usrAlert: UIAlertController = UIAlertController(title: "あなたの情報を入力してください", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+        showInfoMessage(msg: "ユーザ情報を登録して下さい。")
         
-        //アクション定義
-        let defaultAction: UIAlertAction =
-            UIAlertAction(title: "登録", style: UIAlertActionStyle.Default, handler: {(action: UIAlertAction!) -> Void in self.create(usrAlert)})
-        
-        usrAlert.addAction(defaultAction)
-        
-        //テキストフィールド追加
-        usrAlert.addTextFieldWithConfigurationHandler({(usrNm:UITextField!) -> Void in usrNm.placeholder = "氏名"})
-        usrAlert.addTextFieldWithConfigurationHandler({(usrSex:UITextField!) -> Void in usrSex.placeholder = "性別(男性or女性)"})
-        usrAlert.addTextFieldWithConfigurationHandler({(usrYear:UITextField!) -> Void in usrYear.placeholder = "年(yyyy)"})
-        usrAlert.addTextFieldWithConfigurationHandler({(usrMonth:UITextField!) -> Void in usrMonth.placeholder = "月(mm)"})
-        usrAlert.addTextFieldWithConfigurationHandler({(userDay:UITextField!) -> Void in userDay.placeholder = "日(dd)"})
-        
-        presentViewController(usrAlert,animated: true, completion: nil)
+        // showViewControllers へ遷移するために Segue を呼び出す
+        performSegueWithIdentifier("showViewController",sender: nil)
     }
 
     /**
@@ -179,27 +165,6 @@ class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDa
         
         // showViewControllers へ遷移するために Segue を呼び出す
         performSegueWithIdentifier("showViewController",sender: nil)
-    }
-    
-    /**
-     ユーザ情報を登録します。
-     */
-    func create(usr: UIAlertController) {
-        
-        //TODO:入力チェック実装予定
-        
-        //ユーザ情報を登録
-        let prsn = Person.create()
-        prsn.nm = usr.textFields![0].text!
-        prsn.sex = usr.textFields![1].text!
-        prsn.year = usr.textFields![2].text!
-        prsn.month = usr.textFields![3].text!
-        prsn.day = usr.textFields![4].text!
-        prsn.bondSts = false
-        prsn.save()
-        
-        tblPrsn.reloadData()
-        
     }
     
     /**

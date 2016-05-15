@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1CDAC13B32EED1C3516A75FE /* Pods_MyLifeTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 817FC4B30B0A003E1CE7B538 /* Pods_MyLifeTime.framework */; };
+		970E7F581CE892630022BFFD /* imgView.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 970E7F571CE892630022BFFD /* imgView.JPG */; };
 		9710F5F81CD9BBF500C58BE2 /* tabEdit.png in Resources */ = {isa = PBXBuildFile; fileRef = 9710F5F51CD9BBF500C58BE2 /* tabEdit.png */; };
 		9710F5F91CD9BBF500C58BE2 /* tabMLT.png in Resources */ = {isa = PBXBuildFile; fileRef = 9710F5F61CD9BBF500C58BE2 /* tabMLT.png */; };
 		9710F5FA1CD9BBF500C58BE2 /* tabPerson.png in Resources */ = {isa = PBXBuildFile; fileRef = 9710F5F71CD9BBF500C58BE2 /* tabPerson.png */; };
@@ -108,6 +109,7 @@
 		6B40C50E2A2B6662374E855C /* Pods-MyLifeTimeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyLifeTimeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyLifeTimeTests/Pods-MyLifeTimeTests.release.xcconfig"; sourceTree = "<group>"; };
 		817FC4B30B0A003E1CE7B538 /* Pods_MyLifeTime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyLifeTime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B22080FF8FB9A63CBADCAA5 /* Pods-MyLifeTimeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyLifeTimeUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyLifeTimeUITests/Pods-MyLifeTimeUITests.release.xcconfig"; sourceTree = "<group>"; };
+		970E7F571CE892630022BFFD /* imgView.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = imgView.JPG; sourceTree = "<group>"; };
 		9710F5F51CD9BBF500C58BE2 /* tabEdit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabEdit.png; sourceTree = "<group>"; };
 		9710F5F61CD9BBF500C58BE2 /* tabMLT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabMLT.png; sourceTree = "<group>"; };
 		9710F5F71CD9BBF500C58BE2 /* tabPerson.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabPerson.png; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 		9710F5F41CD9BBF500C58BE2 /* MltImage */ = {
 			isa = PBXGroup;
 			children = (
+				970E7F571CE892630022BFFD /* imgView.JPG */,
 				9710F5F51CD9BBF500C58BE2 /* tabEdit.png */,
 				9710F5F61CD9BBF500C58BE2 /* tabMLT.png */,
 				9710F5F71CD9BBF500C58BE2 /* tabPerson.png */,
@@ -682,6 +685,7 @@
 				97FDC7C31CD8AC6800692C30 /* LoadingView.xib in Resources */,
 				97FDC7F31CD8AC7E00692C30 /* Fragment.png in Resources */,
 				97FDC7E51CD8AC7E00692C30 /* Info.plist in Resources */,
+				970E7F581CE892630022BFFD /* imgView.JPG in Resources */,
 				97FDC7921CD8A67000692C30 /* Mlt.storyboard in Resources */,
 				97FDC7F51CD8AC7E00692C30 /* Sparkle.png in Resources */,
 				97FDC7541CD8A12F00692C30 /* LaunchScreen.storyboard in Resources */,

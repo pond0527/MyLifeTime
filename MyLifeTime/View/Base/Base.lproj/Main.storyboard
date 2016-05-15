@@ -27,7 +27,7 @@
                                     <barButtonItem title="+追加" id="E7K-SS-3Jp">
                                         <connections>
                                             <action selector="tapAddBtn:" destination="BYZ-38-t0r" id="Nre-uh-yj8"/>
-                                            <segue destination="AHk-PQ-L67" kind="modal" id="Ku4-AZ-gKT"/>
+                                            <segue destination="AHk-PQ-L67" kind="modal" identifier="showViewController" id="Ku4-AZ-gKT"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -233,6 +233,9 @@
                             <outlet property="animation" destination="Alt-HQ-UPz" id="wqR-nY-GgN"/>
                         </connections>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="backgroundImg" destination="Wjt-Z0-4Lm" id="9mx-2r-Ffj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jsw-5G-v1v" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="Alt-HQ-UPz" customClass="RAMBounceAnimation" customModule="MyLifeTime" customModuleProvider="target"/>

@@ -350,7 +350,6 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
             newPrsn.save()
         }
         
-        //遷移する画面を定義
         showEditMessage(cratSts, fixedMsg: "%@ 様 の%@ が完了しました。", msgArgs: [txtNm.text!, cratSts])
     }
     

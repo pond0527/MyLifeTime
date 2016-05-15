@@ -11,16 +11,14 @@ import SwiftDate
 
 class MltViewController: BaseViewController {
     
+    @IBOutlet weak var backgroundImg: UIImageView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+
     /**
      自クラス呼び出し自に処理されます。
      
@@ -30,6 +28,9 @@ class MltViewController: BaseViewController {
         
         // TODO: ユーザの誕生日を設定
         elapsedTime(1995, month: 2, day: 7)
+        
+        backgroundImg.image = UIImage(named: "imgView.JPG")
+        backgroundImg.alpha = 0.6
     }
     
     /**
@@ -49,4 +50,10 @@ class MltViewController: BaseViewController {
         
         print("経過時間：\(spanDt)")
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
 }

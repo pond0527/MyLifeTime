@@ -26,9 +26,21 @@ class BaseViewController: UIViewController, LTMorphingLabelDelegate {
      */
     override func viewDidAppear(animated: Bool) {
     }
+    
+    /**
+     Infoメッセージを表示します。
+     
+     - parameter titleName: タイトル名
+     - parameter msg:       本文
+     */
+    func showInfoMessage(titleName: String = "お知らせ", msg: String) {
+        
+        let alertView = SCLAlertView()
+        alertView.showTitle(titleName, subTitle: msg, style: SCLAlertViewStyle.Error, closeButtonTitle: "OK", duration: 5.0, colorStyle: MassageType.Error.colorInt, colorTextButton: 0xFFFFFF, circleIconImage: nil)
+    }
 
     /**
-     メッセージを表示します。
+     Editメッセージを表示します。
      
      - parameter titleName: タイトル名
      - parameter msg:       本文
@@ -40,7 +52,7 @@ class BaseViewController: UIViewController, LTMorphingLabelDelegate {
     }
     
     /**
-     メッセージを表示します。
+     Errorメッセージを表示します。
      
      - parameter titleName: タイトル名
      - parameter fixedMsg:  固定文字列
