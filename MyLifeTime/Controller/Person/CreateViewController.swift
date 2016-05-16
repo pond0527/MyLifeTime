@@ -268,7 +268,7 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
     @IBAction func tapCreateBtn(sender: AnyObject) {
         
         var cratSts = "新規登録"
-        //TODO:入力チェック実装予定
+        // 入力チェック
         if txtNm.text!.isEmpty {
             showErrorMessage(msg: "名前を入力して下さい")
             return

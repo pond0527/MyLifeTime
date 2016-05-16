@@ -16,6 +16,8 @@ class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDa
     let cellId = "personList"
         /// ユーザエンティティ格納
     var prsns:[Person] = []
+        /// delegate経由で画面間データ受け渡し
+    let appDlgt: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
     @IBOutlet weak var tblPrsn: UITableView!   //一覧テーブル
     
@@ -25,11 +27,6 @@ class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDa
         
         tblPrsn.delegate = self
         tblPrsn.dataSource = self
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     /**
@@ -61,7 +58,7 @@ class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDa
     func tableView(table: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         prsns = Person.loadAll()
-        return prsns.count > 10 ? 10 : prsns.count
+        return prsns.count > 10 ? TBLVIEW_DTLS_MAX : prsns.count
     }
     
     /**
@@ -87,6 +84,12 @@ class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDa
         
         prsns = Person.loadAll()
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
+        if let index = appDlgt.defaultIndex {
+            
+            if index == indexPath {
+                cell.accessoryType = .Checkmark
+            }
+        }
         
         if prsns.count > 0 {
             cell.textLabel?.text = prsns[indexPath.row].nm
@@ -105,9 +108,6 @@ class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDa
         
         prsns = Person.loadAll()
         let prsn: Person = prsns[indexPath.row]
-        
-        //delegate経由で画面間データ受け渡し
-        let appDlgt: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDlgt.prsn = prsn
         
         
@@ -116,6 +116,55 @@ class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDa
         let mvViewController = stryBrd.instantiateViewControllerWithIdentifier("CreateViewController")
         mvViewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
         self.presentViewController(mvViewController, animated: true, completion: nil)
+    }
+    
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        
+        // デフォルト
+        let edit = UITableViewRowAction(style: .Normal, title: "デフォルト") {
+            (action, indexPath) in
+            
+            // セルの数だけループしてすべてのセルのチェックマークをはずしています。
+            for i in 0..<self.prsns.count {
+                let indexPath: NSIndexPath = NSIndexPath(forRow: i, inSection: indexPath.section)
+                if let cell: UITableViewCell = tableView.cellForRowAtIndexPath(indexPath) {
+                    cell.accessoryType = .None
+                    Person.changeDefaultCheck(indexPath, flg: false)
+                }
+            }
+            
+            if let cell: UITableViewCell = tableView.cellForRowAtIndexPath(indexPath) {
+                cell.accessoryType = .Checkmark
+                self.appDlgt.defaultIndex = indexPath
+                Person.changeDefaultCheck(indexPath, flg: true)
+            }
+        }
+        
+        edit.backgroundColor = UIColor.greenColor()
+        
+        // 削除
+        let del = UITableViewRowAction(style: .Default, title: "削除") {
+            (action, indexPath) in
+            
+            self.prsns = Person.loadAll()
+                
+            //指定したユーザを削除
+            Person.delete(self.prsns[indexPath.row].id)
+            
+            // TableViewを再読込
+            tableView.reloadData()
+            
+            //ユーザ情報がない場合、初期設定を行う
+            self.prsns = Person.loadAll()
+            if self.prsns.count == 0 {
+                self.setup()
+            }
+            
+        }
+        
+        del.backgroundColor = UIColor.redColor()
+        
+        return [edit, del]
     }
     
     /**
@@ -173,5 +222,10 @@ class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDa
      - parameter segue: <#segue description#>
      */
     @IBAction func backFromCreateView(segue:UIStoryboardSegue){
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 }

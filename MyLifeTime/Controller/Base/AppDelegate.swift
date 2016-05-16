@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var prsn: Person?
     var selected: [String]?
+    var defaultIndex: NSIndexPath?
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -23,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Realmマイグレーション(カラムを追加)
         Realm.Configuration.defaultConfiguration = Realm.Configuration(
-            schemaVersion: 1,
+            schemaVersion: 2,
             migrationBlock: { migration, oldSchemaVersion in
                 
                 migration.enumerate(Person.className()) { oldObject, newObject in
@@ -33,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         newObject?["bondYear"] = ""
                         newObject?["bondMonth"] = ""
                         newObject?["bondDay"] = ""
+                        newObject?["defaultCheck"] = false
                     }
                 }
         })

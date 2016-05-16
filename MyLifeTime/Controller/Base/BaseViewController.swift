@@ -33,10 +33,10 @@ class BaseViewController: UIViewController, LTMorphingLabelDelegate {
      - parameter titleName: タイトル名
      - parameter msg:       本文
      */
-    func showInfoMessage(titleName: String = "お知らせ", msg: String) {
+    func showInfoMessage(titleName: String = "お知らせ", msg: String, time: NSTimeInterval = 5.0) {
         
         let alertView = SCLAlertView()
-        alertView.showTitle(titleName, subTitle: msg, style: SCLAlertViewStyle.Error, closeButtonTitle: "OK", duration: 5.0, colorStyle: MassageType.Error.colorInt, colorTextButton: 0xFFFFFF, circleIconImage: nil)
+        alertView.showTitle(titleName, subTitle: msg, style: SCLAlertViewStyle.Info, closeButtonTitle: "OK", duration: time, colorStyle: MassageType.Info.colorInt, colorTextButton: 0xFFFFFF, circleIconImage: nil)
     }
 
     /**
@@ -45,10 +45,10 @@ class BaseViewController: UIViewController, LTMorphingLabelDelegate {
      - parameter titleName: タイトル名
      - parameter msg:       本文
      */
-    func showErrorMessage(titleName: String = "エラー", msg: String) {
+    func showErrorMessage(titleName: String = "エラー", msg: String, time: NSTimeInterval = 5.0) {
         
         let alertView = SCLAlertView()
-        alertView.showTitle(titleName, subTitle: msg, style: SCLAlertViewStyle.Error, closeButtonTitle: "OK", duration: 5.0, colorStyle: MassageType.Error.colorInt, colorTextButton: 0xFFFFFF, circleIconImage: nil)
+        alertView.showTitle(titleName, subTitle: msg, style: SCLAlertViewStyle.Error, closeButtonTitle: "OK", duration: time, colorStyle: MassageType.Error.colorInt, colorTextButton: 0xFFFFFF, circleIconImage: nil)
     }
     
     /**
@@ -58,10 +58,10 @@ class BaseViewController: UIViewController, LTMorphingLabelDelegate {
      - parameter fixedMsg:  固定文字列
      - parameter msgArgs:   代入文字列
      */
-    func showEditMessage(titleName: String, fixedMsg: String, msgArgs: [CVarArgType]) {
+    func showEditMessage(titleName: String, fixedMsg: String, msgArgs: [CVarArgType], time: NSTimeInterval = 5.0) {
         
         let alertView = SCLAlertView()
-        alertView.showTitle(titleName, subTitle: NSString(format: fixedMsg, arguments: getVaList(msgArgs)) as String, style: SCLAlertViewStyle.Edit, closeButtonTitle: "OK", duration: 5.0, colorStyle: 0xA429FF, colorTextButton: 0xFFFFFF, circleIconImage: nil)
+        alertView.showTitle(titleName, subTitle: NSString(format: fixedMsg, arguments: getVaList(msgArgs)) as String, style: SCLAlertViewStyle.Edit, closeButtonTitle: "OK", duration: time, colorStyle: 0xA429FF, colorTextButton: 0xFFFFFF, circleIconImage: nil)
     }
 
     /**

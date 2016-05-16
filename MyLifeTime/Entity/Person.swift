@@ -24,6 +24,7 @@ class Person: Object {
     dynamic var bondYear = ""
     dynamic var bondMonth = ""
     dynamic var bondDay = ""
+    dynamic var defaultCheck = false
 
     /*主キー*/
     override static func primaryKey() -> String? {
@@ -127,5 +128,16 @@ class Person: Object {
         try! realm.write {
             realm.delete(user)
         }
+    }
+    
+    /**
+     ユーザIDを指定してdefaultCheckを変更します。
+     
+     - parameter id: ユーザID
+     */
+    static func changeDefaultCheck(index: NSIndexPath?, flg: Bool) {
+        
+        let prsn = realm.objects(Person)[(index?.row)!]
+        prsn.update({prsn.defaultCheck = flg})
     }
 }

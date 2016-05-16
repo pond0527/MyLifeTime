@@ -11,14 +11,22 @@ import SwiftDate
 
 class MltViewController: BaseViewController {
     
-    @IBOutlet weak var backgroundImg: UIImageView!
+    /// ユーザエンティティ格納
+    var prsns:[Person] = []
+    //delegate経由で画面間データ受け渡し
+    let appDlgt: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
+    @IBOutlet weak var backgroundImg: UIImageView!
+    @IBOutlet weak var lblLifeTime: SpringLabel!
+    @IBOutlet weak var lblLifeTimeHour: LTMorphingLabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(MltViewController.viewDidAppear), userInfo: nil, repeats: true)
     }
-
+    
     /**
      自クラス呼び出し自に処理されます。
      
@@ -26,8 +34,13 @@ class MltViewController: BaseViewController {
      */
     override func viewDidAppear(animated: Bool) {
         
+        prsns = Person.loadAll()
+        
         // TODO: ユーザの誕生日を設定
-        elapsedTime(1995, month: 2, day: 7)
+        guard let index = appDlgt.defaultIndex else {return}
+        
+        let prsn = prsns[index.row]
+        elapsedTime(Int(prsn.year)!, month: Int(prsn.month)!, day: Int(prsn.day)!)
         
         backgroundImg.image = UIImage(named: "imgView.JPG")
         backgroundImg.alpha = 0.6
@@ -43,10 +56,15 @@ class MltViewController: BaseViewController {
         // 経過時間の取得
         let pastTime = dtNow.timeIntervalSinceDate(date)
         
-        // xxxx日
+        // xxxx日にフォーマット整形
         let spanDt = Int(pastTime/60/60/24)
         
-        showErrorMessage("経過時間", msg: "\(spanDt)日\(NSDate().hour)時間\(NSDate().minute)分\(NSDate().second)秒")
+        lblLifeTime.text = "\(spanDt)日"
+        lblLifeTimeHour.text = "\(NSDate().hour)時間\(NSDate().minute)分\(NSDate().second)秒"
+        lblLifeTime.animation = "flash"
+        lblLifeTime.animate()
+        
+//        showInfoMessage("経過時間", msg: "\(spanDt)日\(NSDate().hour)時間\(NSDate().minute)分\(NSDate().second)秒", time: 20.0)
         
         print("経過時間：\(spanDt)")
     }
@@ -55,5 +73,4 @@ class MltViewController: BaseViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 }
