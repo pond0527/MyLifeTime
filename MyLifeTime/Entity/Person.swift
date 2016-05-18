@@ -13,17 +13,29 @@ import RealmSwift
 class Person: Object {
     static let realm = try! Realm()
     
+        /// ユーザID
     dynamic var id = 0
+        /// ユーザ名
     dynamic var nm = ""
+        /// ユーザ性別
     dynamic var sex = ""
+        /// 生年月日(年)
     dynamic var year = ""
+        /// 生年月日(月)
     dynamic var month = ""
+        /// 生年月日(日)
     dynamic var day = ""
+        /// 絆ステータス(有効フラグ)
     dynamic var bondSts = false
+        /// 絆ステータス(カラー)
     dynamic var bondColor = ""
+        /// 絆ステータス(年)
     dynamic var bondYear = ""
+        /// 絆ステータス(月)
     dynamic var bondMonth = ""
+        /// 絆ステータス(日)
     dynamic var bondDay = ""
+        /// デフォルト
     dynamic var defaultCheck = false
 
     /*主キー*/
@@ -139,5 +151,16 @@ class Person: Object {
         
         let prsn = realm.objects(Person)[(index?.row)!]
         prsn.update({prsn.defaultCheck = flg})
+    }
+    
+    /**
+     defaultCheckが有効なユーザを検索します。
+     
+     - returns: defaultCheckが有効なユーザ
+     */
+    static func getDefaultCheckPerson() -> Person {
+        
+        let prsn = realm.objects(Person).filter("defaultCheck == true")
+        return prsn[0]
     }
 }

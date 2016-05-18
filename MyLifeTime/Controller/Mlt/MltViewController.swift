@@ -13,8 +13,6 @@ class MltViewController: BaseViewController {
     
     /// ユーザエンティティ格納
     var prsns:[Person] = []
-    //delegate経由で画面間データ受け渡し
-    let appDlgt: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
     @IBOutlet weak var backgroundImg: UIImageView!
     @IBOutlet weak var lblLifeTime: SpringLabel!
@@ -25,6 +23,7 @@ class MltViewController: BaseViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(MltViewController.viewDidAppear), userInfo: nil, repeats: true)
+        editText()
     }
     
     /**
@@ -37,13 +36,16 @@ class MltViewController: BaseViewController {
         prsns = Person.loadAll()
         
         // TODO: ユーザの誕生日を設定
-        guard let index = appDlgt.defaultIndex else {return}
-        
-        let prsn = prsns[index.row]
+        let prsn = Person.getDefaultCheckPerson()
         elapsedTime(Int(prsn.year)!, month: Int(prsn.month)!, day: Int(prsn.day)!)
         
-        backgroundImg.image = UIImage(named: "imgView.JPG")
-        backgroundImg.alpha = 0.6
+        //ラベルのフォントカラーにデフォルトユーザに設定したしているカラーを適用
+        lblLifeTime.textColor = Color.getInfo(prsn.bondColor).get()
+        lblLifeTimeHour.textColor = Color.getInfo(prsn.bondColor).get()
+        
+        //アニメーション適用
+        lblLifeTime.animation = "wobble"
+        lblLifeTime.animate()
     }
     
     /**
@@ -59,14 +61,25 @@ class MltViewController: BaseViewController {
         // xxxx日にフォーマット整形
         let spanDt = Int(pastTime/60/60/24)
         
-        lblLifeTime.text = "\(spanDt)日"
-        lblLifeTimeHour.text = "\(NSDate().hour)時間\(NSDate().minute)分\(NSDate().second)秒"
-        lblLifeTime.animation = "flash"
-        lblLifeTime.animate()
+        lblLifeTime.text = "\(spanDt) days"
+        lblLifeTimeHour.text = "\(NSDate().hour)hour \(NSDate().minute)minute \(NSDate().second)second"
+    }
+    
+    /**
+     UILabelの設定を行います。
+     */
+    func editText() {
         
-//        showInfoMessage("経過時間", msg: "\(spanDt)日\(NSDate().hour)時間\(NSDate().minute)分\(NSDate().second)秒", time: 20.0)
         
-        print("経過時間：\(spanDt)")
+        backgroundImg.image = UIImage(named: "imgView.JPG")
+        backgroundImg.alpha = 1.0
+        
+        //画面にぼかし効果適用
+        let blurEfct = UIBlurEffect(style: .Light)
+        let efctView = UIVisualEffectView(effect: blurEfct)
+        let rect = UIScreen.mainScreen().bounds
+        efctView.frame = CGRectMake(0, 0, rect.width, rect.height)
+        backgroundImg.addSubview(efctView)
     }
     
     override func didReceiveMemoryWarning() {

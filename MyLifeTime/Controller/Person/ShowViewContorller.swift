@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// 　登録したユーザの一覧を表示する画面です。
 class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     
         /// TableViewの最大明細行
@@ -27,6 +28,7 @@ class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDa
         
         tblPrsn.delegate = self
         tblPrsn.dataSource = self
+        
     }
     
     /**
@@ -58,7 +60,7 @@ class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDa
     func tableView(table: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         prsns = Person.loadAll()
-        return prsns.count > 10 ? TBLVIEW_DTLS_MAX : prsns.count
+        return prsns.count > TBLVIEW_DTLS_MAX ? TBLVIEW_DTLS_MAX : prsns.count
     }
     
     /**
@@ -70,6 +72,7 @@ class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDa
      - returns: <#return value description#>
      */
     func tableView(table: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
         let hdrLbl = UILabel(frame: CGRect(x:0, y:0, width: tblPrsn.bounds.width, height: 50))
         hdrLbl.text = "一覧"
         hdrLbl.font = UIFont.boldSystemFontOfSize(UIFont.labelFontSize())
@@ -84,14 +87,9 @@ class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDa
         
         prsns = Person.loadAll()
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
-        if let index = appDlgt.defaultIndex {
-            
-            if index == indexPath {
-                cell.accessoryType = .Checkmark
-            }
-        }
         
         if prsns.count > 0 {
+            cell.accessoryType = prsns[indexPath.row].defaultCheck ? .Checkmark : .None
             cell.textLabel?.text = prsns[indexPath.row].nm
         }
         
@@ -118,6 +116,14 @@ class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDa
         self.presentViewController(mvViewController, animated: true, completion: nil)
     }
     
+    /**
+     セルの編集モードを定義します。
+     
+     - parameter tableView: <#tableView description#>
+     - parameter indexPath: <#indexPath description#>
+     
+     - returns: <#return value description#>
+     */
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         
         // デフォルト
@@ -135,7 +141,6 @@ class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDa
             
             if let cell: UITableViewCell = tableView.cellForRowAtIndexPath(indexPath) {
                 cell.accessoryType = .Checkmark
-                self.appDlgt.defaultIndex = indexPath
                 Person.changeDefaultCheck(indexPath, flg: true)
             }
         }

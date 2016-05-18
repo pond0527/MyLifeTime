@@ -19,10 +19,16 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "CreateViewController.pickerView(UIPickerView, numberOfRowsInComponent : Int) -&gt; Int:CreateViewController.swift">
+         contextName = "ShowViewContorller.tableView(UITableView, commitEditingStyle : UITableViewCellEditingStyle, forRowAtIndexPath : NSIndexPath) -&gt; ():ShowViewContorller.swift">
+      </ContextState>
+      <ContextState
+         contextName = "CreateViewController.setup() -&gt; ():CreateViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "Color.count()">
+               value = "!editPrsn.year.isEmpty">
+            </PersistentString>
+            <PersistentString
+               value = "editPrsn.year">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -38,16 +44,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "ShowViewContorller.tableView(UITableView, commitEditingStyle : UITableViewCellEditingStyle, forRowAtIndexPath : NSIndexPath) -&gt; ():ShowViewContorller.swift">
-      </ContextState>
-      <ContextState
-         contextName = "CreateViewController.setup() -&gt; ():CreateViewController.swift">
+         contextName = "CreateViewController.pickerView(UIPickerView, numberOfRowsInComponent : Int) -&gt; Int:CreateViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "!editPrsn.year.isEmpty">
-            </PersistentString>
-            <PersistentString
-               value = "editPrsn.year">
+               value = "Color.count()">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -64,6 +64,9 @@
          <PersistentStrings>
             <PersistentString
                value = "defaltCheckIndex">
+            </PersistentString>
+            <PersistentString
+               value = "prsns[indexPath.row].defaultCheck">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

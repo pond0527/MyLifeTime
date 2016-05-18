@@ -257,6 +257,7 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
         
         if !controlActiveBoundSts() {
             txtBondColor.text = ""
+            swchBndSts.enabled = false
         }
     }
 
