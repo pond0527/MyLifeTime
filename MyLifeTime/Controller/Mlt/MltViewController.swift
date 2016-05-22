@@ -35,11 +35,14 @@ class MltViewController: BaseViewController {
         
         prsns = Person.loadAll()
         
-        // TODO: ユーザの誕生日を設定
+        //ユーザの誕生日を設定
         let prsn = Person.getDefaultCheckPerson()
-        elapsedTime(Int(prsn.year)!, month: Int(prsn.month)!, day: Int(prsn.day)!)
+        let spanDt = elapsedTime(Int(prsn.year)!, month: Int(prsn.month)!, day: Int(prsn.day)!)
         
-        //ラベルのフォントカラーにデフォルトユーザに設定したしているカラーを適用
+        lblLifeTime.text = "\(spanDt) days"
+        lblLifeTimeHour.text = "\(NSDate().hour)hour \(NSDate().minute)minute \(NSDate().second)second"
+        
+        //ラベルのフォントカラーにユーザが設定しているカラーを適用
         lblLifeTime.textColor = Color.getInfo(prsn.bondColor).get()
         lblLifeTimeHour.textColor = Color.getInfo(prsn.bondColor).get()
         
@@ -49,27 +52,16 @@ class MltViewController: BaseViewController {
     }
     
     /**
-     経過時間を取得します。
-     */
-    func elapsedTime(year: Int, month: Int, day: Int) {
-        
-        let date = NSDate(year: year, month: month, day: day)
-        
-        // 経過時間の取得
-        let pastTime = dtNow.timeIntervalSinceDate(date)
-        
-        // xxxx日にフォーマット整形
-        let spanDt = Int(pastTime/60/60/24)
-        
-        lblLifeTime.text = "\(spanDt) days"
-        lblLifeTimeHour.text = "\(NSDate().hour)hour \(NSDate().minute)minute \(NSDate().second)second"
-    }
-    
-    /**
      UILabelの設定を行います。
      */
     func editText() {
         
+        lblLifeTime.shadowColor = UIColor.grayColor()
+        lblLifeTime.shadowOffset = CGSizeMake(6, 6)
+        
+        //TODO: 適用されない
+        lblLifeTimeHour.shadowColor = UIColor.grayColor()
+        lblLifeTimeHour.shadowOffset = CGSizeMake(8, 8)
         
         backgroundImg.image = UIImage(named: "imgView.JPG")
         backgroundImg.alpha = 1.0

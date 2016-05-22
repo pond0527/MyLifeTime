@@ -29,6 +29,7 @@ class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDa
         tblPrsn.delegate = self
         tblPrsn.dataSource = self
         
+        notifSetting()
     }
     
     /**

@@ -39,7 +39,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
         })
         
+        // アラート表示の許可をもらう.
+        let setting = UIUserNotificationSettings(forTypes: [.Sound, .Alert, .Badge], categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(setting)
+        
+        //アプリ起動前の通知を受け取る
+        let notify = launchOptions?[UIApplicationLaunchOptionsLocalNotificationKey]
+        
+        if( notify != nil) {
+            //起動時に通知があったことをチェック
+            //ViewContorller未作成
+            //あとでapplicationIconBageNumberを調べて通知チェック
+        }
+        
         return true
+    }
+    
+    //フォアグランド判定(初期起動のみ実行？)
+    func application(application: UIApplication, didReceiveLocalNotification: UILocalNotification) {
+        
+        //起動中に通知がきた場合
+        if application.applicationState == UIApplicationState.Active {
+            let alert = UIAlertController(title: "起動中", message: "通知テスト", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            
+            self.window?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+            
+        }
+        
+        //バックグラウンド時に通知がきた場合
+        if application.applicationState == UIApplicationState.Inactive {
+            let alert = UIAlertController(title: "バックグラウンド", message: "通知テスト", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            
+            self.window?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+            
+        }
     }
 
     func applicationWillResignActive(application: UIApplication) {
