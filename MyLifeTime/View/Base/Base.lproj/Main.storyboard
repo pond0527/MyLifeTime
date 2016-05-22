@@ -93,81 +93,111 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="新規" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Pg-9n-SlJ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新規" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Pg-9n-SlJ">
                                 <rect key="frame" x="143" y="59" width="34" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="氏名：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TxX-n4-CIq">
-                                <rect key="frame" x="9" y="160" width="51" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="氏　　名：" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TxX-n4-CIq">
+                                <rect key="frame" x="16" y="178" width="85" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="性別：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aKS-08-QT5">
-                                <rect key="frame" x="9" y="200" width="51" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="性　　別：" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aKS-08-QT5">
+                                <rect key="frame" x="16" y="218" width="85" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="生年月日：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Igc-v3-0Lh">
-                                <rect key="frame" x="9" y="248" width="85" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="生 年 月 日：" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Igc-v3-0Lh">
+                                <rect key="frame" x="16" y="266" width="99" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="絆ステータス：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mxi-Dx-DoQ">
-                                <rect key="frame" x="9" y="323" width="119" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="絆ステータス：" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mxi-Dx-DoQ">
+                                <rect key="frame" x="16" y="341" width="119" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="sph-xx-ofX">
-                                <rect key="frame" x="102" y="193" width="208" height="29"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="sph-xx-ofX">
+                                <rect key="frame" x="131" y="211" width="168" height="29"/>
                                 <segments>
                                     <segment title="男性"/>
                                     <segment title="女性"/>
                                 </segments>
                             </segmentedControl>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lEY-7x-WTO">
-                                <rect key="frame" x="102" y="151" width="208" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lEY-7x-WTO">
+                                <rect key="frame" x="131" y="169" width="168" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Wyt-5r-juD" customClass="RAMPaperSwitch" customModule="MyLifeTime" customModuleProvider="target">
-                                <rect key="frame" x="257" y="313" width="51" height="31"/>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Wyt-5r-juD" customClass="RAMPaperSwitch" customModule="MyLifeTime" customModuleProvider="target">
+                                <rect key="frame" x="250" y="331" width="51" height="31"/>
                                 <connections>
                                     <action selector="changeBondSts:" destination="AHk-PQ-L67" eventType="valueChanged" id="Xo0-B6-cQ6"/>
                                 </connections>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="出逢日：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eTF-oM-OEM">
-                                <rect key="frame" x="17" y="379" width="68" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="出　逢　日：" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eTF-oM-OEM">
+                                <rect key="frame" x="16" y="397" width="102" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="生年月日" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GvP-Ti-vz1">
-                                <rect key="frame" x="102" y="239" width="208" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="生年月日" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GvP-Ti-vz1">
+                                <rect key="frame" x="131" y="257" width="168" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="出逢日" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="avT-tS-VMA">
-                                <rect key="frame" x="102" y="370" width="208" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="色(任意)" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fBa-rR-6Vs">
-                                <rect key="frame" x="131" y="314" width="118" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="色(任意)" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fBa-rR-6Vs">
+                                <rect key="frame" x="131" y="332" width="111" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="出逢日" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="avT-tS-VMA">
+                                <rect key="frame" x="131" y="388" width="168" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="GvP-Ti-vz1" firstAttribute="leading" secondItem="Igc-v3-0Lh" secondAttribute="trailing" constant="16" id="6Mo-XE-qhp"/>
+                            <constraint firstItem="Wyt-5r-juD" firstAttribute="leading" secondItem="fBa-rR-6Vs" secondAttribute="trailing" constant="8" id="7IW-E2-hhD"/>
+                            <constraint firstItem="fBa-rR-6Vs" firstAttribute="top" secondItem="GvP-Ti-vz1" secondAttribute="bottom" constant="45" id="9Qr-fh-kLq"/>
+                            <constraint firstItem="TxX-n4-CIq" firstAttribute="top" secondItem="gpg-GQ-E0Y" secondAttribute="bottom" constant="134" id="9sx-0j-Ogg"/>
+                            <constraint firstItem="0Pg-9n-SlJ" firstAttribute="top" secondItem="gpg-GQ-E0Y" secondAttribute="bottom" constant="15" id="CRd-tA-Rkp"/>
+                            <constraint firstItem="Wyt-5r-juD" firstAttribute="leading" secondItem="fBa-rR-6Vs" secondAttribute="trailing" constant="8" id="EYf-Wh-mgB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="avT-tS-VMA" secondAttribute="trailing" constant="5" id="Jrb-CR-eo9"/>
                             <constraint firstItem="gpg-GQ-E0Y" firstAttribute="leading" secondItem="aGG-Ng-Jl0" secondAttribute="leading" id="K5q-CI-wsJ"/>
+                            <constraint firstItem="GvP-Ti-vz1" firstAttribute="top" secondItem="sph-xx-ofX" secondAttribute="bottom" constant="18" id="Ko8-F8-Qtq"/>
+                            <constraint firstItem="sph-xx-ofX" firstAttribute="top" secondItem="lEY-7x-WTO" secondAttribute="bottom" constant="12" id="LHB-WM-gPP"/>
+                            <constraint firstItem="mxi-Dx-DoQ" firstAttribute="top" secondItem="Igc-v3-0Lh" secondAttribute="bottom" constant="54" id="LcT-T1-9Tl"/>
+                            <constraint firstItem="eTF-oM-OEM" firstAttribute="leading" secondItem="aGG-Ng-Jl0" secondAttribute="leadingMargin" id="Ory-s4-I7L"/>
+                            <constraint firstItem="aKS-08-QT5" firstAttribute="leading" secondItem="aGG-Ng-Jl0" secondAttribute="leadingMargin" id="SCM-Eq-srt"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sph-xx-ofX" secondAttribute="trailing" constant="5" id="SCY-S0-L5c"/>
+                            <constraint firstItem="avT-tS-VMA" firstAttribute="leading" secondItem="eTF-oM-OEM" secondAttribute="trailing" constant="13" id="TQ2-xW-oNb"/>
+                            <constraint firstItem="fBa-rR-6Vs" firstAttribute="leading" secondItem="aGG-Ng-Jl0" secondAttribute="leadingMargin" constant="115" id="TU5-Ux-His"/>
+                            <constraint firstItem="sph-xx-ofX" firstAttribute="leading" secondItem="aKS-08-QT5" secondAttribute="trailing" constant="30" id="WXB-0f-pND"/>
+                            <constraint firstItem="Igc-v3-0Lh" firstAttribute="leading" secondItem="aGG-Ng-Jl0" secondAttribute="leadingMargin" id="WkV-7C-S6d"/>
+                            <constraint firstItem="TxX-n4-CIq" firstAttribute="leading" secondItem="aGG-Ng-Jl0" secondAttribute="leadingMargin" id="a6t-4J-tRB"/>
+                            <constraint firstItem="mxi-Dx-DoQ" firstAttribute="leading" secondItem="aGG-Ng-Jl0" secondAttribute="leadingMargin" id="aY0-PC-CVy"/>
                             <constraint firstItem="gpg-GQ-E0Y" firstAttribute="top" secondItem="aGG-Ng-Jl0" secondAttribute="top" id="dqo-Mo-izX"/>
+                            <constraint firstItem="aKS-08-QT5" firstAttribute="top" secondItem="TxX-n4-CIq" secondAttribute="bottom" constant="19" id="f3E-Ny-3zP"/>
                             <constraint firstItem="gpg-GQ-E0Y" firstAttribute="width" secondItem="aGG-Ng-Jl0" secondAttribute="width" id="fct-1K-Kg7"/>
+                            <constraint firstItem="lEY-7x-WTO" firstAttribute="leading" secondItem="TxX-n4-CIq" secondAttribute="trailing" constant="30" id="gGc-TS-fU4"/>
+                            <constraint firstItem="avT-tS-VMA" firstAttribute="top" secondItem="mxi-Dx-DoQ" secondAttribute="bottom" constant="26" id="hGI-Y3-ey4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Wyt-5r-juD" secondAttribute="trailing" constant="5" id="lGf-cg-19i"/>
+                            <constraint firstItem="lEY-7x-WTO" firstAttribute="top" secondItem="0Pg-9n-SlJ" secondAttribute="bottom" constant="89" id="lZY-gg-6ty"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="GvP-Ti-vz1" secondAttribute="trailing" constant="5" id="tt9-D7-t4r"/>
+                            <constraint firstItem="Wyt-5r-juD" firstAttribute="top" secondItem="GvP-Ti-vz1" secondAttribute="bottom" constant="44" id="u6Z-q8-dy3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lEY-7x-WTO" secondAttribute="trailing" constant="5" id="uTy-JL-XxK"/>
+                            <constraint firstItem="0Pg-9n-SlJ" firstAttribute="centerX" secondItem="aGG-Ng-Jl0" secondAttribute="centerX" id="wNg-Qe-wHh"/>
+                            <constraint firstItem="eTF-oM-OEM" firstAttribute="top" secondItem="mxi-Dx-DoQ" secondAttribute="bottom" constant="35" id="xD3-RR-spk"/>
+                            <constraint firstItem="Igc-v3-0Lh" firstAttribute="top" secondItem="aKS-08-QT5" secondAttribute="bottom" constant="27" id="zyC-Vn-2Tl"/>
                         </constraints>
                     </view>
                     <connections>
