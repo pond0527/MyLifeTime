@@ -15,9 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var prsn: Person?
-    var selected: [String]?
-    var defaultIndex: NSIndexPath?
-
+    var bondSts = false
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -56,26 +54,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     //フォアグランド判定(初期起動のみ実行？)
-    func application(application: UIApplication, didReceiveLocalNotification: UILocalNotification) {
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
         
         //起動中に通知がきた場合
         if application.applicationState == UIApplicationState.Active {
-            let alert = UIAlertController(title: "起動中", message: "通知テスト", preferredStyle: UIAlertControllerStyle.Alert)
-            
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            
-            self.window?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
-            
+            if application.applicationIconBadgeNumber != 0 {
+                //バッジを0にする
+                application.applicationIconBadgeNumber = 0
+                //通知領域から削除
+                application.cancelLocalNotification(notification)
+            }
         }
         
         //バックグラウンド時に通知がきた場合
         if application.applicationState == UIApplicationState.Inactive {
-            let alert = UIAlertController(title: "バックグラウンド", message: "通知テスト", preferredStyle: UIAlertControllerStyle.Alert)
-            
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            
-            self.window?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
-            
+            //バッジを0にする
+            application.applicationIconBadgeNumber = 0
+            //通知領域から削除
+            application.cancelLocalNotification(notification)
         }
     }
 
@@ -87,6 +83,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        
+        //古い通知があれば削除する
+       application.cancelAllLocalNotifications()
     }
 
     func applicationWillEnterForeground(application: UIApplication) {

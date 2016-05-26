@@ -158,9 +158,22 @@ class Person: Object {
      
      - returns: defaultCheckが有効なユーザ
      */
-    static func getDefaultCheckPerson() -> Person {
+    static func getDefaultCheckPerson() -> Person? {
         
         let prsn = realm.objects(Person).filter("defaultCheck == true")
-        return prsn[0]
+        return prsn.count > 0 ? prsn[0] : nil
+    }
+    
+    /**
+     絆ステータスが同色なユーザを取得します。
+     
+     - parameter color: 絆ステータス(色)
+     
+     - returns: ユーザ
+     */
+    static func getSameColorPersons(color: String) -> Results<Person> {
+        
+        let prsn = realm.objects(Person).filter("bondColor == %@", color)
+        return prsn
     }
 }

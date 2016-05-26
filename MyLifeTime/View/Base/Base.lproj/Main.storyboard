@@ -133,7 +133,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lEY-7x-WTO">
                                 <rect key="frame" x="131" y="169" width="168" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Wyt-5r-juD" customClass="RAMPaperSwitch" customModule="MyLifeTime" customModuleProvider="target">
                                 <rect key="frame" x="250" y="331" width="51" height="31"/>
@@ -164,6 +164,7 @@
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="GvP-Ti-vz1" firstAttribute="leading" secondItem="Igc-v3-0Lh" secondAttribute="trailing" constant="16" id="6Mo-XE-qhp"/>
                             <constraint firstItem="Wyt-5r-juD" firstAttribute="leading" secondItem="fBa-rR-6Vs" secondAttribute="trailing" constant="8" id="7IW-E2-hhD"/>
@@ -199,6 +200,9 @@
                             <constraint firstItem="eTF-oM-OEM" firstAttribute="top" secondItem="mxi-Dx-DoQ" secondAttribute="bottom" constant="35" id="xD3-RR-spk"/>
                             <constraint firstItem="Igc-v3-0Lh" firstAttribute="top" secondItem="aKS-08-QT5" secondAttribute="bottom" constant="27" id="zyC-Vn-2Tl"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="ppY-8p-0aQ" appends="YES" id="rxF-HM-G0Z"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="lblBondDay" destination="eTF-oM-OEM" id="xnm-r3-Oe1"/>
@@ -213,6 +217,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gk0-FI-1OT" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="cRR-jM-Rip" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="ppY-8p-0aQ">
+                    <connections>
+                        <action selector="tapScreen:" destination="AHk-PQ-L67" id="0Ty-7l-ETn"/>
+                        <outlet property="delegate" destination="aGG-Ng-Jl0" id="3wr-3z-yQM"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1235" y="375"/>
         </scene>
@@ -269,7 +279,7 @@
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="morphingEnabled" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="morphingEnabled" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
@@ -315,6 +325,20 @@
                     <view key="view" contentMode="scaleToFill" id="ZQi-zh-yws">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="絆ｽﾃｰﾀｽ有効：" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bz4-Tn-afo">
+                                <rect key="frame" x="76" y="450" width="108" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Xuc-UX-Mss">
+                                <rect key="frame" x="200" y="443" width="51" height="31"/>
+                                <connections>
+                                    <action selector="changeBondSts:" destination="QUT-cX-qkd" eventType="valueChanged" id="RGg-1f-6zg"/>
+                                </connections>
+                            </switch>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Edit" image="tabEdit.png" id="kam-Ig-Qiy" customClass="RAMAnimatedTabBarItem" customModule="MyLifeTime" customModuleProvider="target">
@@ -322,6 +346,9 @@
                             <outlet property="animation" destination="sFc-yX-RQ6" id="7Di-1X-rSI"/>
                         </connections>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="swchbondSts" destination="Xuc-UX-Mss" id="7On-cN-Fun"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XHt-D9-EZ9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="sFc-yX-RQ6" customClass="RAMFlipTopTransitionItemAnimations" customModule="MyLifeTime" customModuleProvider="target"/>

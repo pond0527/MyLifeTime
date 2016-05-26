@@ -9,7 +9,7 @@
 import UIKit
 import SwiftDate
 
-class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
         /// createViewController用ユーザ格納
     var prsn: Person?
@@ -102,6 +102,8 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
         
         txtBondColor.inputView = colorPiker
         txtBondColor.inputAccessoryView = colorToolBar
+        
+        txtNm.delegate = self
 
         //一覧画面よりエンティティを受け取る
         self.prsn = appDlgt.prsn
@@ -376,6 +378,27 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
         return rsltFlg
     }
 
+    /**
+     画面タッチでキーボードを閉じる。
+     */
+    @IBAction func tapScreen(sender: AnyObject) {
+        
+        txtNm.resignFirstResponder()
+    }
+    
+    /**
+     テキストフィールド確定押下時処理。
+     
+     - parameter textField: <#textField description#>
+     
+     - returns: <#return value description#>
+     */
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        return true
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

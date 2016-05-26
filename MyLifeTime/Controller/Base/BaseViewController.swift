@@ -17,6 +17,10 @@ class BaseViewController: UIViewController, LTMorphingLabelDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        guard let prsn: Person = Person.getDefaultCheckPerson() else {return}
+        let date = elapsedTime(Int(prsn.year)!, month: Int(prsn.month)!, day: Int(prsn.day)!)
+        notifSetting("あなたが生まれてから \(date) 日 経過しました。")
     }
     
     /**
@@ -87,12 +91,14 @@ class BaseViewController: UIViewController, LTMorphingLabelDelegate {
     func notifSetting(msg: String = "テスト通知") {
         
         let notif = UILocalNotification()
-        notif.fireDate = NSDate().dateByAddingTimeInterval(5) //起動して5秒後
+        notif.fireDate = NSDate.today()
+        notif.repeatInterval = .Day //毎日通知
         notif.timeZone = NSTimeZone.defaultTimeZone()
-        notif.alertBody =  msg//メッセージを入力
+        notif.alertBody =  msg //メッセージを入力
         notif.alertAction = "OK"
         notif.soundName = UILocalNotificationDefaultSoundName
         notif.applicationIconBadgeNumber = 1 //通知時にバッチを付ける
+        notif.soundName = UILocalNotificationDefaultSoundName //通知音の設定
         UIApplication.sharedApplication().scheduleLocalNotification(notif)
     }
     
@@ -120,7 +126,7 @@ class BaseViewController: UIViewController, LTMorphingLabelDelegate {
     }
     
     /**
-     経過時間を取得します。
+     ユーザの生年月日より現在までの経過時間を取得します。
      
      - parameter year:  年
      - parameter month: 月
@@ -128,7 +134,7 @@ class BaseViewController: UIViewController, LTMorphingLabelDelegate {
      
      - returns: 経過日付
      */
-    func elapsedTime(year: Int, month: Int, day: Int) -> Int {
+    func elapsedTime(year: Int, month: Int, day: Int, bondFjg: Bool = false) -> Int {
         
         let date = NSDate(year: year, month: month, day: day)
         
