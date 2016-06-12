@@ -12,23 +12,22 @@ import SCLAlertView
 
 class BaseViewController: UIViewController, LTMorphingLabelDelegate {
     
-    let dtNow = NSDate()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         guard let prsn: Person = Person.getDefaultCheckPerson() else {return}
-        let date = elapsedTime(Int(prsn.year)!, month: Int(prsn.month)!, day: Int(prsn.day)!)
-        notifSetting("あなたが生まれてから \(date) 日 経過しました。")
-    }
-    
-    /**
-     自クラス呼び出し自に処理されます。
-     
-     - parameter animated: <#animated description#>
-     */
-    override func viewDidAppear(animated: Bool) {
+        let bondPrsns = Person.getSameColorPersons(prsn.bondColor)
+        let birthDate = elapsedTime(Int(prsn.year)!, month: Int(prsn.month)!, day: Int(prsn.day)!)
+        
+        // 通知呼び出し
+        var msg = ""
+        msg = "あなたが生まれてから \(birthDate + 1) 日 経過しました。\n"
+        if(bondPrsns.count > 1){
+            let bontDate = elapsedTime(Int(prsn.bondYear)!, month: Int(prsn.bondMonth)!, day: Int(prsn.bondDay)!)
+            msg += "\(bondPrsns[0].nm) と \(bondPrsns[1].nm) が出逢ってから \(bontDate + 1) 日 経過しました。"
+        }
+        notifSetting(msg)
     }
     
     /**
@@ -38,7 +37,6 @@ class BaseViewController: UIViewController, LTMorphingLabelDelegate {
      - parameter msg:       本文
      */
     func showInfoMessage(titleName: String = "お知らせ", msg: String, time: NSTimeInterval = 5.0) {
-        
         let alertView = SCLAlertView()
         alertView.showTitle(titleName, subTitle: msg, style: SCLAlertViewStyle.Info, closeButtonTitle: "OK", duration: time, colorStyle: MassageType.Info.colorInt, colorTextButton: 0xFFFFFF, circleIconImage: nil)
     }
@@ -50,7 +48,6 @@ class BaseViewController: UIViewController, LTMorphingLabelDelegate {
      - parameter msg:       本文
      */
     func showErrorMessage(titleName: String = "エラー", msg: String, time: NSTimeInterval = 5.0) {
-        
         let alertView = SCLAlertView()
         alertView.showTitle(titleName, subTitle: msg, style: SCLAlertViewStyle.Error, closeButtonTitle: "OK", duration: time, colorStyle: MassageType.Error.colorInt, colorTextButton: 0xFFFFFF, circleIconImage: nil)
     }
@@ -63,7 +60,6 @@ class BaseViewController: UIViewController, LTMorphingLabelDelegate {
      - parameter msgArgs:   代入文字列
      */
     func showEditMessage(titleName: String, fixedMsg: String, msgArgs: [CVarArgType], time: NSTimeInterval = 5.0) {
-        
         let alertView = SCLAlertView()
         alertView.showTitle(titleName, subTitle: NSString(format: fixedMsg, arguments: getVaList(msgArgs)) as String, style: SCLAlertViewStyle.Edit, closeButtonTitle: "OK", duration: time, colorStyle: 0xA429FF, colorTextButton: 0xFFFFFF, circleIconImage: nil)
     }
@@ -75,7 +71,6 @@ class BaseViewController: UIViewController, LTMorphingLabelDelegate {
      - parameter block: アクション
      */
     func wait_atleast(time : NSTimeInterval, @noescape _ block: () -> Void) {
-        
         let start = CFAbsoluteTimeGetCurrent()
         block()
         let end = CFAbsoluteTimeGetCurrent()
@@ -88,13 +83,12 @@ class BaseViewController: UIViewController, LTMorphingLabelDelegate {
     /*
      通知設定を行う。
      */
-    func notifSetting(msg: String = "テスト通知") {
-        
+    func notifSetting(msg: String = "通知がありませんでした。") {
         let notif = UILocalNotification()
-        notif.fireDate = NSDate.today()
+        notif.fireDate = NSDate.tomorrow().dateByAddingTimeInterval(60)
         notif.repeatInterval = .Day //毎日通知
         notif.timeZone = NSTimeZone.defaultTimeZone()
-        notif.alertBody =  msg //メッセージを入力
+        notif.alertBody = msg //メッセージを入力
         notif.alertAction = "OK"
         notif.soundName = UILocalNotificationDefaultSoundName
         notif.applicationIconBadgeNumber = 1 //通知時にバッチを付ける
@@ -111,7 +105,6 @@ class BaseViewController: UIViewController, LTMorphingLabelDelegate {
      - returns: 整形後の日付
      */
     func dateToString(date:NSDate, format: String = "yyyy/MM/dd") -> String {
-        
         let dateFormat: NSDateFormatter = NSDateFormatter()
         
         dateFormat.locale = NSLocale(localeIdentifier: "ja")
@@ -135,7 +128,6 @@ class BaseViewController: UIViewController, LTMorphingLabelDelegate {
      - returns: 経過日付
      */
     func elapsedTime(year: Int, month: Int, day: Int, bondFjg: Bool = false) -> Int {
-        
         let date = NSDate(year: year, month: month, day: day)
         
         // 経過時間の取得

@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import RealmSwift
+import SCLAlertView
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var prsn: Person?
     var bondSts = false
+    var lblEfctAction: LTMorphingEffect = LabelEffects.Evaporate.get
+    var lblSpringAction = SpringActionType.init().WOBBLE
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -42,37 +45,52 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.sharedApplication().registerUserNotificationSettings(setting)
         
         //アプリ起動前の通知を受け取る
-        let notify = launchOptions?[UIApplicationLaunchOptionsLocalNotificationKey]
-        
-        if( notify != nil) {
-            //起動時に通知があったことをチェック
-            //ViewContorller未作成
-            //あとでapplicationIconBageNumberを調べて通知チェック
+        if let notify = launchOptions?[UIApplicationLaunchOptionsLocalNotificationKey] {
+            // アプリが起動していない時にpush通知が届き、push通知から起動した場合
+            print(notify.alertBody)
         }
         
+        //バッジを0にする
+        application.applicationIconBadgeNumber = 0
         return true
     }
     
-    //フォアグランド判定(初期起動のみ実行？)
+    // Push通知受信時とPush通知をタッチして起動したときに呼ばれる
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        let baseView = BaseViewController()
         
-        //起動中に通知がきた場合
-        if application.applicationState == UIApplicationState.Active {
-            if application.applicationIconBadgeNumber != 0 {
-                //バッジを0にする
-                application.applicationIconBadgeNumber = 0
-                //通知領域から削除
-                application.cancelLocalNotification(notification)
-            }
-        }
-        
-        //バックグラウンド時に通知がきた場合
-        if application.applicationState == UIApplicationState.Inactive {
-            //バッジを0にする
+        switch application.applicationState {
+        case .Inactive:
+            // アプリがバックグラウンドにいる状態で、Push通知から起動したとき
+            // バッジを0にする
             application.applicationIconBadgeNumber = 0
-            //通知領域から削除
+            // 通知領域から削除
             application.cancelLocalNotification(notification)
+            
+//            UIApplication.sharedApplication().cancelAllLocalNotifications()
+            
+            break
+        case .Active:
+            // アプリ起動時にPush通知を受信したとき
+            baseView.showInfoMessage("通知があります。" ,msg: notification.alertBody!)
+            // バッジを0にする
+            application.applicationIconBadgeNumber = 0
+            
+            // 通知領域から削除
+            application.cancelLocalNotification(notification)
+            
+//            UIApplication.sharedApplication().cancelAllLocalNotifications()
+            
+            break
+        case .Background:
+            // アプリがバックグラウンドにいる状態でPush通知を受信したとき
+            break
         }
+    }
+    
+    // Push通知が利用不可であればerrorが返ってくる
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        NSLog("Push通知エラー: 利用不可です。" + "\(error)")
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -80,12 +98,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
     }
 
+    // アプリを閉じるときに通過
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         
         //古い通知があれば削除する
-       application.cancelAllLocalNotifications()
+//       application.cancelAllLocalNotifications()
     }
 
     func applicationWillEnterForeground(application: UIApplication) {

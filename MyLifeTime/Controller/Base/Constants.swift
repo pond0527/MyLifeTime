@@ -12,7 +12,6 @@ import UIKit
 
 /// 絆ステータスで使用するカラーを定義します。
 enum Color {
-    
     case LightPink, LightYellow, LightGreen, LightPurple, LightGrey, White
     static let list: [Color] = [Color.LightPink, Color.LightYellow, Color.LightGreen, Color.LightPurple, Color.LightGrey, Color.White]
     
@@ -77,7 +76,6 @@ enum Color {
      - returns: 対象Color情報
      */
     static func getInfo(strColor: String) -> Color {
-        
         switch strColor {
         case "Green":
             return Color.LightGreen
@@ -121,35 +119,33 @@ enum MassageType {
 
 /// Springライブラリのアクションタイプを定義します。
 class SpringActionType {
-    
-    var SHAKE = "shake"
-    var POP = "pop"
-    var MORPH = "morph"
-    var SQUEEZE = "squeeze"
-    var WOBBLE = "wobble"
-    var SWING = "swing"
-    var FLIPX = "flipX"
-    var FLIPY = "flipY"
-    var FALL = "fall"
-    var SQUEEZE_LEFT = "squeezeLeft"
-    var SQUEEZE_RIGHT = "squeezeRight"
-    var SQUEEZE_DOWN = "squeezeDown"
-    var SQUEEZE_UP = "squeezeUp"
-    var SLIDE_LEFT = "slideLeft"
-    var SLIDE_RIGHT = "slideRight"
-    var SLIDE_DOWN = "slideDown"
-    var SLIDE_UP = "slideUp"
-    var FADE_IN = "fadeIn"
-    var FADE_OUT = "fadeOut"
-    var FADE_IN_Left = "fadeInLeft"
-    var FADE_IN_RIGHT = "fadeInRight"
-    var FADE_IN_DOWN = "fadeInDown"
-    var FADE_IN_UP = "fadeInUp"
-    var ZOOM_IN = "zoomIn"
-    var ZOOM_OUT = "zoomOut"
-    var FLASH = "flash"
-    
     var typeList: [String] = []
+    let SHAKE = "shake"
+    let POP = "pop"
+    let MORPH = "morph"
+    let SQUEEZE = "squeeze"
+    let WOBBLE = "wobble"
+    let SWING = "swing"
+    let FLIPX = "flipX"
+    let FLIPY = "flipY"
+    let FALL = "fall"
+    let SQUEEZE_LEFT = "squeezeLeft"
+    let SQUEEZE_RIGHT = "squeezeRight"
+    let SQUEEZE_DOWN = "squeezeDown"
+    let SQUEEZE_UP = "squeezeUp"
+    let SLIDE_LEFT = "slideLeft"
+    let SLIDE_RIGHT = "slideRight"
+    let SLIDE_DOWN = "slideDown"
+    let SLIDE_UP = "slideUp"
+    let FADE_IN = "fadeIn"
+    let FADE_OUT = "fadeOut"
+    let FADE_IN_Left = "fadeInLeft"
+    let FADE_IN_RIGHT = "fadeInRight"
+    let FADE_IN_DOWN = "fadeInDown"
+    let FADE_IN_UP = "fadeInUp"
+    let ZOOM_IN = "zoomIn"
+    let ZOOM_OUT = "zoomOut"
+    let FLASH = "flash"
     
     init() {
         typeList += ["\(SHAKE)"]
@@ -210,12 +206,45 @@ enum LabelEffects {
         }
     }
     
+    /// 要素を文字列形式で取得します。
+    var name: String {
+        switch self {
+        case Evaporate:
+            return "Evaporate"
+        case Fall:
+            return "Fall"
+        case Pixelate:
+            return "Pixelate"
+        case Sparkle:
+            return "Sparkle"
+        case Scale:
+            return "Scale"
+        }
+    }
+    
     /**
      要素数を取得します。
      
      - returns: 要素数
      */
     static func count() -> Int{
-        return Color.list.count
+        return LabelEffects.list.count
+    }
+    
+    static func getActionByStr(str: String) -> LTMorphingEffect {
+        switch str {
+        case "Evaporate":
+            return .Evaporate
+        case "Fall":
+            return .Fall
+        case "Pixelate":
+            return .Pixelate
+        case "Sparkle":
+            return .Sparkle
+        case "Scale":
+            return .Scale
+        default:
+            return .Evaporate
+        }
     }
 }

@@ -20,7 +20,10 @@ class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDa
         /// delegate経由で画面間データ受け渡し
     let appDlgt: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
-    @IBOutlet weak var tblPrsn: UITableView!   //一覧テーブル
+        /// 一覧テーブル
+    @IBOutlet weak var tblPrsn: UITableView!
+        /// 追加ボタン
+    @IBOutlet weak var btnAdd: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,12 +39,15 @@ class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDa
      - parameter animated: <#animated description#>
      */
     override func viewDidAppear(animated: Bool) {
-        
         prsns = Person.loadAll()
         
         //ユーザ情報がない場合、初期設定を行う
         if prsns.count == 0 {
             setup()
+        } else if prsns.count >= TBLVIEW_DTLS_MAX {
+            btnAdd.enabled = false
+        } else if prsns.count < TBLVIEW_DTLS_MAX {
+            btnAdd.enabled = true
         }
         
         // 一覧を再読込
@@ -57,7 +63,6 @@ class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDa
      - returns: 最大明細10行
      */
     func tableView(table: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         prsns = Person.loadAll()
         return prsns.count > TBLVIEW_DTLS_MAX ? TBLVIEW_DTLS_MAX : prsns.count
     }
@@ -71,7 +76,6 @@ class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDa
      - returns: <#return value description#>
      */
     func tableView(table: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
         let hdrLbl = UILabel(frame: CGRect(x:0, y:0, width: tblPrsn.bounds.width, height: 50))
         hdrLbl.text = "一覧"
         hdrLbl.font = UIFont.boldSystemFontOfSize(UIFont.labelFontSize())
@@ -83,7 +87,6 @@ class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDa
      セルに値を表示する。
      */
     func tableView(table: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         prsns = Person.loadAll()
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
         
@@ -102,7 +105,6 @@ class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDa
      - parameter indexPath: <#indexPath description#>
      */
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
         prsns = Person.loadAll()
         let prsn: Person = prsns[indexPath.row]
         appDlgt.prsn = prsn
@@ -124,7 +126,6 @@ class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDa
      - returns: <#return value description#>
      */
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-        
         // デフォルト
         let edit = UITableViewRowAction(style: .Normal, title: "デフォルト") {
             (action, indexPath) in
@@ -145,7 +146,6 @@ class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDa
         }
         
         edit.backgroundColor = UIColor.greenColor()
-        
         // 削除
         let del = UITableViewRowAction(style: .Default, title: "削除") {
             (action, indexPath) in
@@ -179,7 +179,6 @@ class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDa
      - parameter indexPath:    <#indexPath description#>
      */
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        
         // 削除
         prsns = Person.loadAll()
         if editingStyle == UITableViewCellEditingStyle.Delete {
@@ -202,7 +201,6 @@ class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDa
      初期表示の設定を行います。
      */
     func setup() {
-        
         showInfoMessage(msg: "ユーザ情報を登録して下さい。")
         
         // showViewControllers へ遷移するために Segue を呼び出す
@@ -215,7 +213,6 @@ class ShowViewContorller: BaseViewController, UITableViewDelegate, UITableViewDa
      - parameter sender: <#sender description#>
      */
     @IBAction func tapAddBtn(sender: AnyObject) {
-        
         // showViewControllers へ遷移するために Segue を呼び出す
         performSegueWithIdentifier("showViewController",sender: nil)
     }

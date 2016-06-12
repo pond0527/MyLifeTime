@@ -38,14 +38,6 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
     }
     
     /**
-     自クラス呼出時に処理されます。
-     
-     - parameter animated: <#animated description#>
-     */
-    override func viewDidAppear(animated: Bool) {
-    }
-    
-    /**
      自クラス終了時に処理されます。
      
      - parameter animated: <#animated description#>
@@ -58,7 +50,6 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
      初期値を表示します。
      */
     func setup() {
-        
         // 生年月日・出逢日の設定
         birthDatePicker = UIDatePicker()
         birthDatePicker.datePickerMode = UIDatePickerMode.Date
@@ -110,7 +101,7 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
         
         //ユーザ情報を編集するか判定
         if let editPrsn = self.prsn {
-            
+            lblSts.text = "編集登録"
             txtNm.text = editPrsn.nm
             
             txtBirthDt.text =
@@ -134,6 +125,8 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
             }
             
             swchBndSts.setOn(editPrsn.bondSts, animated: true)
+        } else {
+            lblSts.text = "新規登録"
         }
         
         controlActiveBoundSts()
@@ -164,7 +157,6 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
     
     // セルをビューで表示
     func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
-        
         let label = UILabel(frame: CGRectMake(0, 0, pickerView.frame.width/CGFloat(5), 44))
             label.text = Color.list[row].name()
             label.textAlignment = NSTextAlignment.Center
@@ -178,7 +170,6 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
      - parameter sender: <#sender description#>
      */
     func changeBirthDate(sender:AnyObject?){
-
         txtBirthDt.text = dateToString(birthDatePicker.date)
     }
     
@@ -188,7 +179,6 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
      - parameter sender: <#sender description#>
      */
     func changeBondDate(sender:AnyObject?){
-        
         txtBondDt.text = dateToString(bondDatePicker.date)
     }
     
@@ -198,20 +188,18 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
      - parameter sender: <#sender description#>
      */
     func tappedDtToolBarCompleteBtn(sender: UIBarButtonItem) {
-        
         txtBondDt.resignFirstResponder()
         txtBirthDt.resignFirstResponder()
     }
     
     /**
-     カラー選択時。
+     絆ステータス(カラー)選択時。
      
      - parameter pickerView: <#pickerView description#>
      - parameter row:        <#row description#>
      - parameter component:  <#component description#>
      */
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-
         txtBondColor.text = Color.list[row].name()
     }
     
@@ -221,7 +209,6 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
      - parameter sender: <#sender description#>
      */
     func tappedColorToolBarCompleteBtn(sender: UIBarButtonItem) {
-        
         if(txtBondColor.text!.isEmpty) {
             swchBndSts.enabled = false
             swchBndSts.onTintColor = Color.White.get()
@@ -246,7 +233,6 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
      - parameter sender: <#sender description#>
      */
     func tappedDtToolBarClearBtn(sender: UIBarButtonItem) {
-        
         txtBondColor.text = ""
     }
     
@@ -256,7 +242,6 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
      - parameter sender: <#sender description#>
      */
     @IBAction func changeBondSts(sender: AnyObject) {
-        
         if !controlActiveBoundSts() {
             txtBondColor.text = ""
             swchBndSts.enabled = false
@@ -269,7 +254,6 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
      - parameter sender: <#sender description#>
      */
     @IBAction func tapCreateBtn(sender: AnyObject) {
-        
         var cratSts = "新規登録"
         // 入力チェック
         if txtNm.text!.isEmpty {
@@ -291,7 +275,6 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
         
         //ユーザ情報を登録
         if let editPrsn = appDlgt.prsn {
-            
             //編集
             cratSts = "編集"
             editPrsn.update({
@@ -322,7 +305,6 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
                 editPrsn.bondColor = self.txtBondColor.text!
             })
         } else {
-            
             //新規
             let newPrsn = Person.create()
             newPrsn.nm = txtNm.text!
@@ -360,7 +342,6 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
      絆ステータスの状態により活性制御を行う。
      */
     func controlActiveBoundSts() -> Bool{
-        
          var rsltFlg = false
         
         //絆ステータスの状態により活性制御を行う
@@ -382,7 +363,6 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
      画面タッチでキーボードを閉じる。
      */
     @IBAction func tapScreen(sender: AnyObject) {
-        
         txtNm.resignFirstResponder()
     }
     
@@ -394,7 +374,6 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
      - returns: <#return value description#>
      */
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        
         textField.resignFirstResponder()
         return true
     }
