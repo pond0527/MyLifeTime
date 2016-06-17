@@ -209,6 +209,11 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
      - parameter sender: <#sender description#>
      */
     func tappedColorToolBarCompleteBtn(sender: UIBarButtonItem) {
+        if !Person.isBondColorRegisterable(txtBondColor.text!) {
+            showErrorMessage(msg: "既に使用されている色です。\n他の色を選択してください。")
+            return
+        }
+        
         if(txtBondColor.text!.isEmpty) {
             swchBndSts.enabled = false
             swchBndSts.onTintColor = Color.White.get()

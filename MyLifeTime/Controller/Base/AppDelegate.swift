@@ -67,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // 通知領域から削除
             application.cancelLocalNotification(notification)
             
-//            UIApplication.sharedApplication().cancelAllLocalNotifications()
+            UIApplication.sharedApplication().cancelAllLocalNotifications()
             
             break
         case .Active:
@@ -79,7 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // 通知領域から削除
             application.cancelLocalNotification(notification)
             
-//            UIApplication.sharedApplication().cancelAllLocalNotifications()
+            UIApplication.sharedApplication().cancelAllLocalNotifications()
             
             break
         case .Background:

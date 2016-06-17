@@ -176,4 +176,17 @@ class Person: Object {
         let prsn = realm.objects(Person).filter("bondColor == %@", color)
         return prsn
     }
+    
+    /**
+     絆ステータス(色)が登録可能か判定を行います。
+     
+     - parameter color: 絆ステータス(色)
+     
+     - returns: 判定フラグ： true: 可能 false: 不可能
+     */
+    static func isBondColorRegisterable(color: String) -> Bool {
+        
+        let prsn = realm.objects(Person).filter("bondColor == %@", color)
+        return prsn.count < 2 ? true : false
+    }
 }
