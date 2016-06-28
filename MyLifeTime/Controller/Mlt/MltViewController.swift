@@ -38,34 +38,25 @@ class MltViewController: BaseViewController {
      */
     override func viewDidAppear(animated: Bool) {
         prsns = Person.loadAll()
-        var isEdit = false
         
         // ユーザに変更がない場合、アニメーションのみ適用
-        if let defUser: Person = Person.getDefaultCheckPerson() {
-            if let tmpPrsn = prsn {
-                
-                if defUser.id != tmpPrsn.id {
-                    // 既にデフォルトユーザが設定済み かつ デフォルトユーザが変更された場合
-                    prsn = defUser
-                    isEdit = true
-                }
-                
-                isEdit = true
-                
-            } else {
-                // デフォルトユーザが未設定 かつ デフォルトユーザが設定された場合
-                prsn = defUser
-                isEdit = true
-            }
-            
-        } else {
+        guard let defUser: Person = Person.getDefaultCheckPerson() else {
             showErrorMessage(msg: "デフォルトユーザを設定して下さい。")
             return
         }
         
-        if(isEdit) {
-            editText()
+        if let tmpPrsn = prsn {
+            // 既にデフォルトユーザが設定済み かつ デフォルトユーザが変更された場合
+            if defUser.id != tmpPrsn.id {
+                prsn = defUser
+            }
+            
+        } else {
+            // デフォルトユーザが未設定 かつ デフォルトユーザが設定された場合
+            prsn = defUser
         }
+        
+        editText()
     }
     
     /**

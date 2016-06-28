@@ -92,13 +92,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "CreateViewController.setup() -&gt; ():CreateViewController.swift">
+         contextName = "BaseViewController.notifSetting(String) -&gt; ():BaseViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "!editPrsn.year.isEmpty">
-            </PersistentString>
-            <PersistentString
-               value = "editPrsn.year">
+               value = "NSDate()">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -114,6 +111,22 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "CreateViewController.tappedColorToolBarCompleteBtn(UIBarButtonItem) -&gt; ():CreateViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "txtBondColor.text!">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static Person.isSameBondColorPerson(String) -&gt; Bool:Person.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "prsn.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "CreateViewController.changeBondDate(AnyObject?) -&gt; ():CreateViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -125,21 +138,24 @@
          contextName = "MltViewController.editText() -&gt; ():MltViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "!prsn!.bondSts">
-            </PersistentString>
-            <PersistentString
                value = "prsn!.bondColor">
             </PersistentString>
             <PersistentString
                value = "appDlgt.bondSts">
             </PersistentString>
+            <PersistentString
+               value = "!prsn!.bondSts">
+            </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "BaseViewController.notifSetting(String) -&gt; ():BaseViewController.swift">
+         contextName = "CreateViewController.setup() -&gt; ():CreateViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "NSDate()">
+               value = "!editPrsn.year.isEmpty">
+            </PersistentString>
+            <PersistentString
+               value = "editPrsn.year">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

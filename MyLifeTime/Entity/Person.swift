@@ -185,9 +185,8 @@ class Person: Object {
      - returns: 判定フラグ： true: 存在する false: 存在しない
      */
     static func isSameBondColorPerson(color: String) -> Bool {
-        
         let prsn = realm.objects(Person).filter("bondColor == %@", color)
-        return prsn.count == 2 ? true : false
+        return prsn.count > 1 ? true : false
     }
     
     /**

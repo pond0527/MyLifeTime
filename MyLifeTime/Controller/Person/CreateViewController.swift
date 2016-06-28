@@ -225,6 +225,7 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
         // 存在チェック
         if Person.isSameBondColorPerson(txtBondColor.text!) {
             showErrorMessage(msg: "既に使用されている色です。\n他の色を選択してください。")
+            txtBondColor.text = ""
             return
         }
         
