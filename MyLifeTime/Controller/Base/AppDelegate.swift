@@ -19,7 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var bondSts = false
     var lblEfctAction: LTMorphingEffect = LabelEffects.Evaporate.get
     var lblSpringAction = SpringActionType.init().WOBBLE
-
+    var imgSlctView = (BaseConstants.IMG_VIEW, false) // TODO:変更フラグも付加したい
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         

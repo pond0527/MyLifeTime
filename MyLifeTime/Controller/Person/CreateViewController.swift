@@ -15,6 +15,7 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
     var prsn: Person?
         /// 画面間データ格納
     let appDlgt: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    
     var dtToolBar:UIToolbar!
     var colorToolBar:UIToolbar!
     var birthDatePicker: UIDatePicker!
@@ -47,7 +48,7 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
     }
     
     /**
-     初期値を表示します。
+     初期設定を行います。
      */
     func setup() {
         // 生年月日・出逢日の設定
@@ -64,12 +65,14 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
         dtToolBar.barStyle = .BlackTranslucent
         dtToolBar.tintColor = UIColor.whiteColor()
         dtToolBar.backgroundColor = UIColor.blackColor()
+        
         let dtToolBarCompleteBtn = UIBarButtonItem(title: "完了", style: .Plain, target: self, action: #selector(CreateViewController.tappedDtToolBarCompleteBtn(_:)))
         dtToolBarCompleteBtn.tag = 1
         dtToolBar.items = [dtToolBarCompleteBtn]
         
         txtBirthDt.inputView = birthDatePicker
         txtBirthDt.inputAccessoryView = dtToolBar
+        
         txtBondDt.inputView = bondDatePicker
         txtBondDt.inputAccessoryView = dtToolBar
         
@@ -85,8 +88,10 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
         colorToolBar.barStyle = .BlackTranslucent
         colorToolBar.tintColor = UIColor.whiteColor()
         colorToolBar.backgroundColor = UIColor.blackColor()
+        
         let colorToolBarCompleteBtn = UIBarButtonItem(title: "完了", style: .Plain, target: self, action: #selector(CreateViewController.tappedColorToolBarCompleteBtn(_:)))
         let colorToolBarClearBtn = UIBarButtonItem(title: "クリア", style: .Plain, target: self, action: #selector(CreateViewController.tappedDtToolBarClearBtn(_:)))
+        
         colorToolBarCompleteBtn.tag = 1
         colorToolBarClearBtn.tag = 2
         colorToolBar.items = [colorToolBarCompleteBtn, colorToolBarClearBtn]
@@ -101,30 +106,36 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
         
         //ユーザ情報を編集するか判定
         if let editPrsn = self.prsn {
-            lblSts.text = "編集登録"
+            lblSts.text = "編集"
+            
             txtNm.text = editPrsn.nm
             
-            txtBirthDt.text =
-                !editPrsn.year.isEmpty ? dateToString(NSDate(year: Int(editPrsn.year)!, month: Int(editPrsn.month)!, day: Int(editPrsn.day)!)) : ""
+            txtBirthDt.text = !editPrsn.year.isEmpty ?
+                dateToString(NSDate(year: Int(editPrsn.year)!, month: Int(editPrsn.month)!, day: Int(editPrsn.day)!)) : ""
             
             birthDatePicker.date = !editPrsn.year.isEmpty ? NSDate(year: Int(editPrsn.year)!, month: Int(editPrsn.month)!, day: Int(editPrsn.day)!) : NSDate.today()
             
             slctSex.selectedSegmentIndex = editPrsn.sex == "男性" ? 0 : 1
             
-            txtBondDt.text = !editPrsn.bondYear.isEmpty ? dateToString(NSDate(year: Int(editPrsn.bondYear)!, month: Int(editPrsn.bondMonth)!, day: Int(editPrsn.bondDay)!)) : ""
+            txtBondDt.text = !editPrsn.bondYear.isEmpty ?
+                dateToString(NSDate(year: Int(editPrsn.bondYear)!, month: Int(editPrsn.bondMonth)!, day: Int(editPrsn.bondDay)!)) : ""
             
             bondDatePicker.date = !editPrsn.bondYear.isEmpty ? NSDate(year: Int(editPrsn.bondYear)!, month: Int(editPrsn.bondMonth)!, day: Int(editPrsn.bondDay)!) : NSDate.today()
             
+            // 絆ステータスの状態により設定を行う
             if(!editPrsn.bondColor.isEmpty) {
                 txtBondColor.text = editPrsn.bondColor
                 swchBndSts.enabled = true
+                
                 swchBndSts.onTintColor = Color.getInfo(editPrsn.bondColor).get()
                 self.view.backgroundColor = Color.getInfo(editPrsn.bondColor).get()
+                
             } else {
                 swchBndSts.enabled = false
             }
             
             swchBndSts.setOn(editPrsn.bondSts, animated: true)
+            
         } else {
             lblSts.text = "新規登録"
         }
@@ -133,7 +144,7 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
     }
     
     /**
-     ピッカーに表示する列数を返す。
+     絆ステータス(色)Pikcerに表示する列数を返す。
      
      - parameter pickerView: <#pickerView description#>
      
@@ -144,7 +155,7 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
     }
     
     /**
-     ピッカーに表示する行数を返す。
+     絆ステータス(色)Pikcerに表示する行数を返す。
      
      - parameter pickerView: <#pickerView description#>
      - parameter component:  <#component description#>
@@ -155,7 +166,7 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
         return Color.count()
     }
     
-    // セルをビューで表示
+    // 絆ステータス(色)Pikcerに値を設定します。
     func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
         let label = UILabel(frame: CGRectMake(0, 0, pickerView.frame.width/CGFloat(5), 44))
             label.text = Color.list[row].name()
@@ -193,7 +204,7 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
     }
     
     /**
-     絆ステータス(カラー)選択時。
+     絆ステータス(色)選択時。
      
      - parameter pickerView: <#pickerView description#>
      - parameter row:        <#row description#>
@@ -204,12 +215,15 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
     }
     
     /**
-     絆ステータス(カラー)「完了」押下時。
+     絆ステータス(色)「完了」押下時。
      
      - parameter sender: <#sender description#>
      */
     func tappedColorToolBarCompleteBtn(sender: UIBarButtonItem) {
-        if !Person.isBondColorRegisterable(txtBondColor.text!) {
+        txtBondColor.resignFirstResponder()
+        
+        // 存在チェック
+        if Person.isSameBondColorPerson(txtBondColor.text!) {
             showErrorMessage(msg: "既に使用されている色です。\n他の色を選択してください。")
             return
         }
@@ -220,6 +234,7 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
             self.view.backgroundColor = Color.White.get()
             swchBndSts.setOn(false, animated: true)
             changeBondSts(self)
+            
         } else {
             swchBndSts.enabled = true
             swchBndSts.onTintColor = Color.getInfo(txtBondColor.text!).get()
@@ -228,12 +243,10 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
             swchBndSts.setOn(true, animated: true)
             changeBondSts(self)
         }
-        
-        txtBondColor.resignFirstResponder()
     }
     
     /**
-     絆ステータス(カラー)「クリア」押下時。
+     絆ステータス(色)「クリア」押下時。
      
      - parameter sender: <#sender description#>
      */
@@ -260,6 +273,7 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
      */
     @IBAction func tapCreateBtn(sender: AnyObject) {
         var cratSts = "新規登録"
+        
         // 入力チェック
         if txtNm.text!.isEmpty {
             showErrorMessage(msg: "名前を入力して下さい")
@@ -284,9 +298,11 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
             cratSts = "編集"
             editPrsn.update({
                 editPrsn.nm = self.txtNm.text!
+                
                 let index = self.slctSex.selectedSegmentIndex
                 editPrsn.sex = self.slctSex.titleForSegmentAtIndex(index)!
-                if self.txtBirthDt.text! != "" {
+                
+                if !self.txtBirthDt.text!.isEmpty {
                     let sprtDt = self.txtBirthDt.text!.componentsSeparatedByString("/")
                     editPrsn.year =  sprtDt[0]
                     editPrsn.month = sprtDt[1]
@@ -296,7 +312,9 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
                     editPrsn.month = ""
                     editPrsn.day = ""
                 }
+                
                 editPrsn.bondSts = self.swchBndSts.on ? true : false
+                
                 if self.txtBondDt.text! != "" {
                     let sprtDt = self.txtBondDt.text!.componentsSeparatedByString("/")
                     editPrsn.bondYear =  sprtDt[0]
@@ -307,14 +325,19 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
                     editPrsn.bondMonth = ""
                     editPrsn.bondDay = ""
                 }
+                
                 editPrsn.bondColor = self.txtBondColor.text!
             })
+            
         } else {
             //新規
             let newPrsn = Person.create()
+            
             newPrsn.nm = txtNm.text!
+            
             let index = slctSex.selectedSegmentIndex
             newPrsn.sex = slctSex.titleForSegmentAtIndex(index)!
+            
             if self.txtBirthDt.text! != "" {
                 let sprtDt = self.txtBirthDt.text!.componentsSeparatedByString("/")
                 newPrsn.year =  sprtDt[0]
@@ -325,7 +348,9 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
                 newPrsn.month = ""
                 newPrsn.day = ""
             }
+            
             newPrsn.bondSts = swchBndSts.on ? true : false
+            
             if self.txtBondDt.text! != "" {
                 let sprtDt = self.txtBondDt.text!.componentsSeparatedByString("/")
                 newPrsn.bondYear =  sprtDt[0]
@@ -336,7 +361,9 @@ class CreateViewController: BaseViewController, UIToolbarDelegate, UIPickerViewD
                 newPrsn.bondMonth = ""
                 newPrsn.bondDay = ""
             }
+            
             newPrsn.bondColor = txtBondColor.text!
+            
             newPrsn.save()
         }
         

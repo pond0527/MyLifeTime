@@ -26,16 +26,7 @@ class MltViewController: BaseViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        backgroundImg.image = UIImage(named: "imgView.JPG")
-        backgroundImg.alpha = 1.0
-        
-        //画面にぼかし効果適用
-        let blurEfct = UIBlurEffect(style: .Light)
-        let efctView = UIVisualEffectView(effect: blurEfct)
-        let rect = UIScreen.mainScreen().bounds
-        efctView.frame = CGRectMake(0, 0, rect.width, rect.height)
-        backgroundImg.addSubview(efctView)
-        
+        // タイマーを設定
         NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(MltViewController.showTime), userInfo: nil, repeats: true)
         NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: #selector(MltViewController.animateLabel), userInfo: nil, repeats: true)
     }
@@ -47,21 +38,33 @@ class MltViewController: BaseViewController {
      */
     override func viewDidAppear(animated: Bool) {
         prsns = Person.loadAll()
+        var isEdit = false
         
-        //ユーザに変更がない場合、アニメーションのみ適用
+        // ユーザに変更がない場合、アニメーションのみ適用
         if let defUser: Person = Person.getDefaultCheckPerson() {
             if let tmpPrsn = prsn {
+                
                 if defUser.id != tmpPrsn.id {
+                    // 既にデフォルトユーザが設定済み かつ デフォルトユーザが変更された場合
                     prsn = defUser
-                    editText()
+                    isEdit = true
                 }
+                
+                isEdit = true
+                
             } else {
+                // デフォルトユーザが未設定 かつ デフォルトユーザが設定された場合
                 prsn = defUser
+                isEdit = true
             }
-            editText()
+            
         } else {
             showErrorMessage(msg: "デフォルトユーザを設定して下さい。")
             return
+        }
+        
+        if(isEdit) {
+            editText()
         }
     }
     
@@ -73,7 +76,7 @@ class MltViewController: BaseViewController {
     }
     
     /**
-     アニメーション。
+     アニメーションを適用します。
      */
     func animateLabel(sender: NSTimer) {
         // Springアニメーション適用
@@ -89,15 +92,14 @@ class MltViewController: BaseViewController {
      UILabelの設定を行います。
      */
     func editText() {
-        //ユーザの誕生日を設定
+        // ユーザの誕生日を設定
         var year = Int(prsn!.year)!
         var month = Int(prsn!.month)!
         var day = Int(prsn!.day)!
         
-        //絆ステータスが有効 かつ Edit画面の絆ステータス有効
+        // 絆ステータスが有効 かつ Edit画面の絆ステータス有効
         if prsn!.bondSts && appDlgt.bondSts {
-            let bondPrsns = Person.getSameColorPersons(prsn!.bondColor)
-            if bondPrsns.count > 1 {
+            if Person.isSameBondColorPerson(prsn!.bondColor) {
                 year = Int(prsn!.bondYear)!
                 month = Int(prsn!.bondMonth)!
                 day = Int(prsn!.bondDay)!
@@ -111,12 +113,43 @@ class MltViewController: BaseViewController {
         lblLifeTime.textColor = Color.getInfo(prsn!.bondColor).get()
         lblLifeTimeHour.textColor = Color.getInfo(prsn!.bondColor).get()
         
+        // 影を適用
         lblLifeTime.shadowColor = UIColor.grayColor()
         lblLifeTime.shadowOffset = CGSizeMake(6, 6)
         
-        //TODO: 適用されない
-        lblLifeTimeHour.shadowColor = UIColor.grayColor()
-        lblLifeTimeHour.shadowOffset = CGSizeMake(8, 8)
+        // 背景画像設定
+        let (img, edit) = appDlgt.imgSlctView
+        backgroundImg.alpha = 1.0
+        
+        if !edit {
+            removeSubView(backgroundImg)
+            backgroundImg.image = BaseConstants.IMG_VIEW
+            
+            // 画面にぼかし効果適用
+            let blurEfct = UIBlurEffect(style: .Light)
+            let efctView = UIVisualEffectView(effect: blurEfct)
+            let rect = UIScreen.mainScreen().bounds
+            efctView.frame = CGRectMake(0, 0, rect.width, rect.height)
+            
+            self.backgroundImg.addSubview(efctView)
+            
+        } else {
+            backgroundImg.image = img
+            
+            // ぼかしを削除
+            removeSubView(backgroundImg)
+        }
+    }
+    
+    /**
+     ViewのSubViewを削除します。
+     
+     - parameter view: View
+     */
+    private func removeSubView(view: UIImageView) {
+        for subView in view.subviews {
+            subView.removeFromSuperview()
+        }
     }
     
     override func didReceiveMemoryWarning() {

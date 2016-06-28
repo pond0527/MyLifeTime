@@ -367,6 +367,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="teC-rU-Qpm">
+                                <rect key="frame" x="112" y="131" width="75" height="30"/>
+                                <state key="normal" title="写真を選択"/>
+                                <connections>
+                                    <action selector="tapImgSlct:" destination="QUT-cX-qkd" eventType="touchUpInside" id="u3c-kF-lo0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -376,6 +383,7 @@
                         </connections>
                     </tabBarItem>
                     <connections>
+                        <outlet property="btnImgSlct" destination="teC-rU-Qpm" id="lDk-zL-wME"/>
                         <outlet property="swchbondSts" destination="Xuc-UX-Mss" id="7On-cN-Fun"/>
                         <outlet property="txtLblAction" destination="Cq5-8M-RIz" id="OC0-8i-LTa"/>
                         <outlet property="txtLblEfct" destination="MGR-Lj-OCo" id="JkL-yJ-tg7"/>

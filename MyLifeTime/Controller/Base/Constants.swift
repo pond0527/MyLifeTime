@@ -10,6 +10,12 @@
 
 import UIKit
 
+
+/// ViewControllerで使用する定数を定義します。
+public class BaseConstants {
+       static let IMG_VIEW = UIImage(named: "imgView.JPG")
+}
+
 /// 絆ステータスで使用するカラーを定義します。
 enum Color {
     case LightPink, LightYellow, LightGreen, LightPurple, LightGrey, White

@@ -16,17 +16,19 @@ class BaseViewController: UIViewController, LTMorphingLabelDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        // TODO: デフォルトユーザーが切り替わるたび、msgが追加されている。各タブに遷移する毎に処理されている。
         guard let prsn: Person = Person.getDefaultCheckPerson() else {return}
-        let bondPrsns = Person.getSameColorPersons(prsn.bondColor)
         let birthDate = elapsedTime(Int(prsn.year)!, month: Int(prsn.month)!, day: Int(prsn.day)!)
         
         // 通知呼び出し
-        var msg = ""
-        msg = "あなたが生まれてから \(birthDate + 1) 日 経過しました。\n"
+        var msg = "\(prsn.nm)が生まれてから \(birthDate + 1) 日 経過しました。\n"
+        
+        let bondPrsns = Person.getSameColorPersons(prsn.bondColor)
         if(bondPrsns.count > 1){
             let bontDate = elapsedTime(Int(prsn.bondYear)!, month: Int(prsn.bondMonth)!, day: Int(prsn.bondDay)!)
             msg += "\(bondPrsns[0].nm) と \(bondPrsns[1].nm) が出逢ってから \(bontDate + 1) 日 経過しました。"
         }
+        
         notifSetting(msg)
     }
     
@@ -62,22 +64,6 @@ class BaseViewController: UIViewController, LTMorphingLabelDelegate {
     func showEditMessage(titleName: String, fixedMsg: String, msgArgs: [CVarArgType], time: NSTimeInterval = 5.0) {
         let alertView = SCLAlertView()
         alertView.showTitle(titleName, subTitle: NSString(format: fixedMsg, arguments: getVaList(msgArgs)) as String, style: SCLAlertViewStyle.Edit, closeButtonTitle: "OK", duration: time, colorStyle: 0xA429FF, colorTextButton: 0xFFFFFF, circleIconImage: nil)
-    }
-
-    /**
-     遅延処理を行います。
-     
-     - parameter time:  遅延時間
-     - parameter block: アクション
-     */
-    func wait_atleast(time : NSTimeInterval, @noescape _ block: () -> Void) {
-        let start = CFAbsoluteTimeGetCurrent()
-        block()
-        let end = CFAbsoluteTimeGetCurrent()
-        let wait = max(0.0, time - (end - start))
-        if wait > 0.0 {
-            NSThread.sleepForTimeInterval(wait)
-        }
     }
     
     /*

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditViewController: BaseViewController, UIToolbarDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
+class EditViewController: BaseViewController, UIToolbarDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     /// delegate経由で画面間データ受け渡し
     let appDlgt: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -21,6 +21,7 @@ class EditViewController: BaseViewController, UIToolbarDelegate, UIPickerViewDat
     @IBOutlet weak var swchbondSts: UISwitch!
     @IBOutlet weak var txtLblEfct: UITextField!
     @IBOutlet weak var txtLblAction: UITextField!
+    @IBOutlet weak var btnImgSlct: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +31,7 @@ class EditViewController: BaseViewController, UIToolbarDelegate, UIPickerViewDat
     }
     
     /**
-     自クラス呼び出し自に処理されます。
+     自クラス呼び出し自に処理を行います。
      
      - parameter animated: <#animated description#>
      */
@@ -57,6 +58,9 @@ class EditViewController: BaseViewController, UIToolbarDelegate, UIPickerViewDat
         }
     }
     
+    /**
+     初期設定を行います。
+     */
     func setup() {
         // ラベルエフェクトの設定
         lblEfctPiker = UIPickerView()
@@ -65,6 +69,24 @@ class EditViewController: BaseViewController, UIToolbarDelegate, UIPickerViewDat
         lblEfctPiker.delegate = self
         lblEfctPiker.dataSource = self
         
+        lblEfctToolBar = UIToolbar(frame: CGRectMake(0, self.view.frame.size.height/6, self.view.frame.size.width, 40.0))
+        lblEfctToolBar.layer.position = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height-20.0)
+        lblEfctToolBar.barStyle = .BlackTranslucent
+        lblEfctToolBar.tintColor = UIColor.whiteColor()
+        lblEfctToolBar.backgroundColor = UIColor.blackColor()
+        
+        let lblEfctToolBarCompleteBtn = UIBarButtonItem(title: "完了", style: .Plain, target: self, action: #selector(EditViewController.tappedLblEfctToolBarCompleteBtn(_:)))
+        let lblEfctToolBarClearBtn = UIBarButtonItem(title: "クリア", style: .Plain, target: self, action: #selector(EditViewController.tappedLblEfctClearBtn(_:)))
+        
+        // TODO: 必要か？
+        lblEfctToolBarCompleteBtn.tag = 1
+        lblEfctToolBarClearBtn.tag = 2
+        
+        lblEfctToolBar.items = [lblEfctToolBarCompleteBtn, lblEfctToolBarClearBtn]
+        
+        txtLblEfct.inputView = lblEfctPiker
+        txtLblEfct.inputAccessoryView = lblEfctToolBar
+        
         // ラベルアクションの設定
         lblActionPiker = UIPickerView()
         lblActionPiker.showsSelectionIndicator = true
@@ -72,37 +94,22 @@ class EditViewController: BaseViewController, UIToolbarDelegate, UIPickerViewDat
         lblActionPiker.delegate = self
         lblActionPiker.dataSource = self
         
-        lblEfctToolBar = UIToolbar(frame: CGRectMake(0, self.view.frame.size.height/6, self.view.frame.size.width, 40.0))
-        lblEfctToolBar.layer.position = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height-20.0)
-        lblEfctToolBar.barStyle = .BlackTranslucent
-        lblEfctToolBar.tintColor = UIColor.whiteColor()
-        lblEfctToolBar.backgroundColor = UIColor.blackColor()
-        
         lblActionToolBar = UIToolbar(frame: CGRectMake(0, self.view.frame.size.height/6, self.view.frame.size.width, 40.0))
         lblActionToolBar.layer.position = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height-20.0)
         lblActionToolBar.barStyle = .BlackTranslucent
         lblActionToolBar.tintColor = UIColor.whiteColor()
         lblActionToolBar.backgroundColor = UIColor.blackColor()
         
-        let lblEfctToolBarCompleteBtn = UIBarButtonItem(title: "完了", style: .Plain, target: self, action: #selector(EditViewController.tappedLblEfctToolBarCompleteBtn(_:)))
-        let lblEfctToolBarClearBtn = UIBarButtonItem(title: "クリア", style: .Plain, target: self, action: #selector(EditViewController.tappedLblEfctClearBtn(_:)))
         let lblActionToolBarCompleteBtn = UIBarButtonItem(title: "完了", style: .Plain, target: self, action: #selector(EditViewController.tappedLblActionToolBarCompleteBtn(_:)))
         let lblActionToolBarClearBtn = UIBarButtonItem(title: "クリア", style: .Plain, target: self, action: #selector(EditViewController.tappedLblActionClearBtn(_:)))
-        lblEfctToolBarCompleteBtn.tag = 1
-        lblEfctToolBarClearBtn.tag = 2
-        
-        lblEfctToolBar.items = [lblEfctToolBarCompleteBtn, lblEfctToolBarClearBtn]
         lblActionToolBar.items = [lblActionToolBarCompleteBtn, lblActionToolBarClearBtn]
-        
-        txtLblEfct.inputView = lblEfctPiker
-        txtLblEfct.inputAccessoryView = lblEfctToolBar
         
         txtLblAction.inputView = lblActionPiker
         txtLblAction.inputAccessoryView = lblActionToolBar
     }
     
     /**
-     ピッカーに表示する列数を返す。
+     ラベルエフェクト、アクションPickerに表示する列数を返します。
      
      - parameter pickerView: <#pickerView description#>
      
@@ -121,7 +128,7 @@ class EditViewController: BaseViewController, UIToolbarDelegate, UIPickerViewDat
     }
     
     /**
-     ピッカーに表示する行数を返す。
+     ラベルエフェクト、アクションPickerに表示する行数を返します。
      
      - parameter pickerView: <#pickerView description#>
      - parameter component:  <#component description#>
@@ -140,7 +147,16 @@ class EditViewController: BaseViewController, UIToolbarDelegate, UIPickerViewDat
         return rowCnt
     }
     
-    // セルをビューで表示
+    /**
+     ラベルエフェクト、アクションPickerに値を設定します。
+     
+     - parameter pickerView: <#pickerView description#>
+     - parameter row:        <#row description#>
+     - parameter component:  <#component description#>
+     - parameter view:       <#view description#>
+     
+     - returns: <#return value description#>
+     */
     func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
         var lblNm = ""
         let label = UILabel(frame: CGRectMake(0, 0, pickerView.frame.width/CGFloat(5), 44))
@@ -155,11 +171,6 @@ class EditViewController: BaseViewController, UIToolbarDelegate, UIPickerViewDat
         label.text = lblNm
         
         return label
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     /**
@@ -215,5 +226,41 @@ class EditViewController: BaseViewController, UIToolbarDelegate, UIPickerViewDat
     func tappedLblActionClearBtn(sender: UIBarButtonItem) {
         txtLblAction.text = ""
         appDlgt.lblEfctAction = LabelEffects.getActionByStr(txtLblAction.text!)
+    }
+    
+    /**
+     写真を選択押下時。
+     
+     - parameter sender: <#sender description#>
+     */
+    @IBAction func tapImgSlct(sender: AnyObject) {
+        let imgPicker = UIImagePickerController()
+        
+        // フォトライブラリから選択
+        imgPicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        // 編集OFFに設定
+        imgPicker.allowsEditing = false
+        
+        imgPicker.delegate = self
+        self.presentViewController(imgPicker, animated: true, completion: nil)
+    }
+
+    /**
+     写真選択時。
+     
+     - parameter picker: <#picker description#>
+     - parameter info:   <#info description#>
+     */
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        let img = info[UIImagePickerControllerOriginalImage] as! UIImage
+        appDlgt.imgSlctView = (img, true)
+        
+        // 画面を閉じる
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 }

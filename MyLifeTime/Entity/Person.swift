@@ -156,7 +156,7 @@ class Person: Object {
     /**
      defaultCheckが有効なユーザを検索します。
      
-     - returns: defaultCheckが有効なユーザ
+     - returns: 有効なユーザ
      */
     static func getDefaultCheckPerson() -> Person? {
         
@@ -165,7 +165,7 @@ class Person: Object {
     }
     
     /**
-     絆ステータスが同色なユーザを取得します。
+     絆ステータス(色)が同色なユーザを取得します。
      
      - parameter color: 絆ステータス(色)
      
@@ -178,15 +178,26 @@ class Person: Object {
     }
     
     /**
-     絆ステータス(色)が登録可能か判定を行います。
+     絆ステータス(色)が同色なユーザが存在するか判定します。
      
      - parameter color: 絆ステータス(色)
      
-     - returns: 判定フラグ： true: 可能 false: 不可能
+     - returns: 判定フラグ： true: 存在する false: 存在しない
      */
-    static func isBondColorRegisterable(color: String) -> Bool {
+    static func isSameBondColorPerson(color: String) -> Bool {
         
         let prsn = realm.objects(Person).filter("bondColor == %@", color)
-        return prsn.count < 2 ? true : false
+        return prsn.count == 2 ? true : false
+    }
+    
+    /**
+     デフォルトユーザが設定されているか判定します。
+     
+     - returns: 判定フラグ： true: 設定済み false: 未設定
+     */
+    static func isDefaultPerson() -> Bool {
+        
+        let prsn = realm.objects(Person).filter("defaultCheck == true")
+        return prsn.count > 0 ? true : false
     }
 }
